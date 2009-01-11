@@ -1,0 +1,26 @@
+$def with (task)
+
+$var title = "Task Details"
+
+<div id="task" class="span-17 open">
+  <h3>$task['name']</h3>
+  <p>$task['posted']</p>
+</div>
+
+<div id="tag" class="span-6 last">
+  <h4>Tags</h4>
+  <form action="/tag" method="post">
+    <p>
+      <input type="text" name="tag" />
+      <input type="submit" value="Tag" />
+    </p>
+    <input type="hidden" name="task" value="$task.id" />
+  </form>
+  $if 'tags' in task:
+    <ul>
+      $for tag in task['tags']:
+        <li>$tag</li>
+    </ul>
+</div>
+
+<hr class="space" />
