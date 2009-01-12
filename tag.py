@@ -1,5 +1,7 @@
 import web
 from couchdb import Server
+from datetime import datetime
+import types
 
 render = web.template.render('static/', base='site')
 
@@ -8,6 +10,55 @@ urls = (
 )
 
 db = Server()['tasks']
+
+def _getTags(taskId):
+    fun = '''
+    function(doc) {
+      if (doc.tags && doc._id == '%s')
+        emit(doc._id, doc.tags);
+    }''' % (taskId)
+    return [r.value for r in db.query(fun)]
+
+def _getTasks():
+    fun = '''
+    function(doc) {
+      if (doc.type == 'task')
+        emit(doc._id, null);
+    }
+    '''
+    return [r.key for r in db.query(fun)]
+
+def _exists(tag):
+    fun = '''
+    function(doc) {
+      if (doc.type == 'tag' && doc.name == '%s')
+        emit(doc._id, null);
+    }''' % (tag)
+    tag = [r.key for r in db.query(fun)]
+    if tag:
+        return True
+    else:
+        return False
+
+def _create(tagname):
+    row = dict(type = 'tag', tag = tagname, posted = datetime.today().ctime())
+    db.create(row)
+
+# python cookbook
+def flatten(sequence, scalarp, result = None):
+    if result is None: return []
+    for item in sequence:
+        if scalarp(item): result.append(item)
+        else: flatten(item, scalarp, result)
+
+def getAllTags():
+    alltags = []
+    def is_tag(x):
+        return type(x) == types.StringType
+    for taskId in _getTasks():
+        tags = _getTags(taskId)
+        flatten(tags, is_tag, alltags)
+    return list(set(alltags))
 
 class Tag:
     def append(self, tags, tag):
