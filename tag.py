@@ -40,16 +40,16 @@ def _exists(tag):
     else:
         return False
 
-def _create(tagname):
-    row = dict(type = 'tag', tag = tagname, posted = datetime.today().ctime())
+def _create(tag):
+    row = dict(type = 'tag', name = tag, posted = datetime.today().ctime())
     db.create(row)
 
 # python cookbook
-def flatten(sequence, scalarp, result = None):
+def _flatten(sequence, scalarp, result = None):
     if result is None: return []
     for item in sequence:
         if scalarp(item): result.append(item)
-        else: flatten(item, scalarp, result)
+        else: _flatten(item, scalarp, result)
 
 def getAllTags():
     alltags = []
@@ -57,8 +57,19 @@ def getAllTags():
         return type(x) == types.StringType
     for taskId in _getTasks():
         tags = _getTags(taskId)
-        flatten(tags, is_tag, alltags)
+        _flatten(tags, is_tag, alltags)
     return list(set(alltags))
+
+def makeTags():
+    tags = getAllTags()
+    for t in tags:
+        _create(t)
+
+def flushTags():
+    for id in db:
+        doc = db[id]
+        if doc['type'] == 'tag':
+            db.delete(doc)
 
 class Tag:
     def append(self, tags, tag):
