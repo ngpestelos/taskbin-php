@@ -29,7 +29,7 @@ class Inbox:
         f = '''
         function(doc) {
           if (doc.type == 'task')
-            emit(doc.posted, doc);
+            emit(Date.parse(doc.posted), doc);
         }'''
         return [(r.id, r.value['name']) for r in db.query(f, descending=True)]
 
