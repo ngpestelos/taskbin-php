@@ -11,82 +11,31 @@ urls = (
 
 db = Server()['tasks']
 
-def _getTags(taskId):
-    fun = '''
-    function(doc) {
-      if (doc.tags && doc._id == '%s')
-        emit(doc._id, doc.tags);
-    }''' % (taskId)
-    return [r.value for r in db.query(fun)]
-
-def _getTasks():
-    fun = '''
-    function(doc) {
-      if (doc.type == 'task')
-        emit(doc._id, null);
-    }
-    '''
-    return [r.key for r in db.query(fun)]
-
-def _exists(tag):
+def getDocument(name):
     fun = '''
     function(doc) {
       if (doc.type == 'tag' && doc.name == '%s')
-        emit(doc._id, null);
-    }''' % (tag)
-    tag = [r.key for r in db.query(fun)]
-    if tag:
-        return True
-    else:
-        return False
+        emit(doc._id, doc);
+    }''' % (name)
+    return [(r.key, r.value) for r in db.query(fun)]
 
-def _create(tag):
-    row = dict(type = 'tag', name = tag, posted = datetime.today().ctime())
-    db.create(row)
+def create(t):
+    row = dict(type='tag', name=t, posted=datetime.today().ctime())
+    return db.create(row)
 
-# python cookbook
-def _flatten(sequence, scalarp, result = None):
-    if result is None: return []
-    for item in sequence:
-        if scalarp(item): result.append(item)
-        else: _flatten(item, scalarp, result)
-
-def getAllTags():
-    alltags = []
-    def is_tag(x):
-        return type(x) == types.StringType
-    for taskId in _getTasks():
-        tags = _getTags(taskId)
-        _flatten(tags, is_tag, alltags)
-    return list(set(alltags))
-
-def makeTags():
-    tags = getAllTags()
-    for t in tags:
-        _create(t)
-
-def flushTags():
-    for id in db:
-        doc = db[id]
-        if doc['type'] == 'tag':
-            db.delete(doc)
+def addTask(tagId, taskId):
+    tag = db[tagId]
+    tag.setdefault('tasks', []).append(taskId)
+    db[tagId] = tag
 
 class Tag:
-    def append(self, tags, tag):
-        if tag in tags:
-            return tags
-        else:
-            tags.append(tag)
-            tags.sort()
-            return tags
-
     def POST(self):
         input = web.input()
-        doc = db[input.task]
-        if 'tags' in doc:
-            tags = self.append(doc['tags'], input.tag)
-            doc['tags'] = tags
+        doc = getDocument(input.tag)
+        id = None
+        if doc:
+            id = doc[0][0]
         else:
-            doc['tags'] = [input.tag]
-        db[input.task] = doc
+            id = create(input.tag)
+        addTask(id, input.task)
         raise web.seeother('/task/%s' % input.task)
