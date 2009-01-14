@@ -5,7 +5,7 @@
 #task { padding: 8px; }
 .posted { margin: 0; padding: 0; }
 .trash { background-color: #E9C2BE; }
-/*.trash { background-color: #C9EDCC; }*/
+.next { background-color: #C9EDCC; }
 .stuff { background-color: #E0FF92; }
 .someday { background-color: #C2CFF1; }
 
