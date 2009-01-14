@@ -6,6 +6,8 @@ $if task['type'] == 'trash':
   $ bgclass = 'trash'
 $elif task['type'] == 'someday':
   $ bgclass = 'someday'
+$elif task['type'] == 'next':
+  $ bgclass = 'next'
 
 <div id="content" class="span-18">
   <div id="task" class="$bgclass">
@@ -33,5 +35,9 @@ $elif task['type'] == 'someday':
   $if tags:
     <div id="tags">
       <h4>Tags</h4>
+      <ul>
+        $for (id, name) in tags:
+          <li>$name</li>
+      </ul>
     </div>
 </div>

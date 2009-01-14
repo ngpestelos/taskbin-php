@@ -6,10 +6,10 @@ import types
 render = web.template.render('static/', base='site')
 
 urls = (
-  '/tag', 'Tag'
+  '/tag', 'tag.Tag'
 )
 
-db = Server()['tasks']
+db = Server()['taskbin']
 
 def getDocument(name):
     fun = '''
@@ -19,14 +19,21 @@ def getDocument(name):
     }''' % (name)
     return [(r.key, r.value) for r in db.query(fun)]
 
-def create(t):
+def getTaskTags(taskId):
+    fun = '''
+    function(doc) {
+      if (doc.type == 'tasktag' && doc.task == '%s')
+        emit(doc.name, doc);
+    }''' % (taskId)
+    return [(r.value['tag'], r.value['name']) for r in db.query(fun)]
+
+def makeTag(t):
     row = dict(type='tag', name=t, posted=datetime.today().ctime())
     return db.create(row)
 
-def addTask(tagId, taskId):
-    tag = db[tagId]
-    tag.setdefault('tasks', []).append(taskId)
-    db[tagId] = tag
+def addTask(aTag, taskId):
+    row = dict(type='tasktag', tag=aTag['_id'], name=aTag['name'], task=taskId)
+    return db.create(row)
 
 class Tag:
     def POST(self):
@@ -36,6 +43,6 @@ class Tag:
         if doc:
             id = doc[0][0]
         else:
-            id = create(input.tag)
-        addTask(id, input.task)
+            id = makeTag(input.tag)
+        addTask(db[id], input.task)
         raise web.seeother('/task/%s' % input.task)

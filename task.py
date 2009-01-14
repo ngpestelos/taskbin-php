@@ -1,5 +1,6 @@
 import web
 from couchdb import Server
+from tag import getTaskTags
 
 urls = (
   '/task/(.*)', 'task.Detail',
@@ -25,9 +26,9 @@ class Move:
             move(id, 'someday')
         elif 'next' in input:
             move(id, 'next')
-        raise web.seeother('/inbox') 
+        raise web.seeother('/') 
 
 class Detail:
     def GET(self, id):
-        tags = []
+        tags = getTaskTags(id)
         return render.task_detail(db[id], tags)
