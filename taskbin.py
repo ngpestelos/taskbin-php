@@ -1,7 +1,7 @@
 import web
 import stuff, task
 import tag, trash
-import next
+import next, someday
 
 urls = (
   '/',  'stuff.New'
@@ -12,6 +12,7 @@ urls += task.urls
 urls += tag.urls
 urls += trash.urls
 urls += next.urls
+urls += someday.urls
 
 app = web.application(urls, locals(), autoreload=True)
 
