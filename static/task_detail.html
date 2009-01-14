@@ -1,26 +1,29 @@
-$def with (task)
+$def with (task, tags)
 
 $var title = "Task Details"
 
-<div id="task" class="span-17 open">
-  <h3>$task['name']</h3>
-  <p>$task['posted']</p>
+<div id="content" class="span-18">
+  <div id="task">
+    <h3>$task['name']</h3>
+    <p class="posted">$task['posted']</p>
+  </div>
 </div>
-
-<div id="tag" class="span-6 last">
-  <h4>Tags</h4>
-  <form action="/tag" method="post">
-    <p>
+<div id="sidebar" class="span-6 last">
+  <div id="moveto">
+    <h4>Move to:</h4>
+    <p><a href="/move/$task['_id']?trash">Trash</a></p>
+    <p><a href="/move/$task['_id']?someday">Someday</a></p>
+    <p><a href="/move/$task['_id']?next">Next</a></p>
+  </div>
+  <div id="tform">
+    <form action="/tag" method="post">
       <input type="text" name="tag" />
       <input type="submit" value="Tag" />
-    </p>
-    <input type="hidden" name="task" value="$task.id" />
-  </form>
-  $if 'tags' in task:
-    <ul>
-      $for tag in task['tags']:
-        <li>$tag</li>
-    </ul>
+      <input type="hidden" name="task" value="$task.id" />
+    </form>
+  </div>
+  $if tags:
+    <div id="tags">
+      <h4>Tags</h4>
+    </div>
 </div>
-
-<hr class="space" />

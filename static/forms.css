@@ -1,1 +1,3 @@
 textarea { height: 100px; }
+
+input#submit { display: block; margin-top: 10px; }
