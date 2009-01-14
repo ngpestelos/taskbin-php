@@ -14,7 +14,7 @@ urls += trash.urls
 urls += next.urls
 urls += someday.urls
 
-app = web.application(urls, locals(), autoreload=True)
+app = web.application(urls, globals(), autoreload=True)
 
 if __name__ == '__main__':
     app.run()

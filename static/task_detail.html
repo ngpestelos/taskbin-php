@@ -1,9 +1,14 @@
 $def with (task, tags)
 
 $var title = "Task Details"
+$ bgclass = "stuff"
+$if task['type'] == 'trash':
+  $ bgclass = 'trash'
+$elif task['type'] == 'someday':
+  $ bgclass = 'someday'
 
 <div id="content" class="span-18">
-  <div id="task">
+  <div id="task" class="$bgclass">
     <h3>$task['name']</h3>
     <p class="posted">$task['posted']</p>
   </div>
