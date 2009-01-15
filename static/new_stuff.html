@@ -1,3 +1,5 @@
+$def with (tags)
+
 $var title = "New Stuff"
 
 <div id="content" class="span-18">
@@ -11,5 +13,11 @@ $var title = "New Stuff"
 </div>
 
 <div id="sidebar" class="span-6 last">
-  <p>Tags</p>
+  <div id="alltags">
+    <h4>Tags</h4>
+    <ul>
+      $for (id, tag) in tags:
+        <li><a href="/tag/$id">$tag</a></li>
+    </ul>
+  </div>
 </div>

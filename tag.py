@@ -35,6 +35,14 @@ def addTask(aTag, taskId):
     row = dict(type='tasktag', tag=aTag['_id'], name=aTag['name'], task=taskId)
     return db.create(row)
 
+def getAllTags():
+    fun = '''
+    function(doc) {
+      if (doc.type == 'tag')
+        emit(doc.name, doc);
+    }'''
+    return [(r.id, r.key) for r in db.query(fun)]
+
 class Tag:
     def POST(self):
         input = web.input()

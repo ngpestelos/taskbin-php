@@ -2,6 +2,7 @@ import web
 from couchdb import Server
 from datetime import datetime
 from utils import getItems
+from tag import getAllTags
 
 urls = (
   '/inbox', 'stuff.Inbox',
@@ -28,4 +29,5 @@ class New:
         raise web.seeother('/')
 
     def GET(self):
-        return render.new_stuff()
+        tags = getAllTags()
+        return render.new_stuff(tags)
