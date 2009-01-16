@@ -1,9 +1,10 @@
 import web
-import stuff, task
+import task
 import tag, trash
 import next, someday
 
 urls = (
+  '/task/(.*)', 'Detail',
   '/inbox', 'Inbox',
   '/post', 'NewStuff',
   '/',  'NewStuff'
@@ -19,6 +20,10 @@ app = web.application(urls, globals(), autoreload=True)
 
 render = web.template.render('static/', base='site')
 
+class Detail:
+    def GET(self, id):
+        return render.task_detail(task.get(id))
+
 class Inbox:
     def GET(self):
         return render.inbox(task.getAll('in'))
@@ -26,7 +31,7 @@ class Inbox:
 class NewStuff:
     def POST(self):
         input = web.input()
-        stuff.post(input.stuff)
+        task.post(input.stuff)
         raise web.seeother('/')
 
     def GET(self):

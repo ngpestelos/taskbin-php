@@ -10,6 +10,10 @@ db = Server()['taskbin']
 
 render = web.template.render('static/', base='site')
 
+def post(stuff):
+    row = dict(type='in', name=stuff, posted=datetime.today().ctime())
+    db.create(row)
+
 def getAll(type):
     fun = '''
     function(doc) {
