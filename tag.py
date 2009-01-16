@@ -12,8 +12,12 @@ urls = (
 
 db = Server()['taskbin']
 
-def getAll():
-    return []
+def post(id, name):
+    task = db[id]
+    if 'tags' in task and name in task['tags']:
+        return
+    task.setdefault('tags', []).append(name)
+    db[id] = task 
 
 def getDocument(name):
     fun = '''

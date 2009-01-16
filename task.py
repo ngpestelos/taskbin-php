@@ -14,6 +14,9 @@ def post(stuff):
     row = dict(type='in', name=stuff, posted=datetime.today().ctime())
     db.create(row)
 
+def get(id):
+    return db[id]
+
 def getAll(type):
     fun = '''
     function(doc) {

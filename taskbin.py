@@ -1,24 +1,23 @@
 import web
-import task
-import tag, trash
-import next, someday
+import task, tag
 
 urls = (
+  '/tag', 'Tag',
   '/task/(.*)', 'Detail',
   '/inbox', 'Inbox',
   '/post', 'NewStuff',
   '/',  'NewStuff'
 )
 
-urls += task.urls
-urls += tag.urls
-urls += trash.urls
-urls += next.urls
-urls += someday.urls
-
 app = web.application(urls, globals(), autoreload=True)
 
 render = web.template.render('static/', base='site')
+
+class Tag:
+    def POST(self):
+        input = web.input()
+        tag.post(input.task, input.tag)
+        raise web.seeother('/task/%s' % input.task)
 
 class Detail:
     def GET(self, id):

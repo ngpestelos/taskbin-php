@@ -1,4 +1,4 @@
-$def with (task, tags)
+$def with (task)
 
 $var title = "Task Details"
 $ bgclass = "stuff"
@@ -8,6 +8,12 @@ $elif task['type'] == 'someday':
   $ bgclass = 'someday'
 $elif task['type'] == 'next':
   $ bgclass = 'next'
+
+$ tags = []
+$if 'tags' in task:
+  $ tags = task['tags']
+
+$ tags.sort()
 
 <div id="content" class="span-18">
   <div id="task" class="$bgclass">
@@ -36,8 +42,8 @@ $elif task['type'] == 'next':
     <div id="tags">
       <h4>Tags</h4>
       <ul>
-        $for (id, name) in tags:
-          <li>$name</li>
+        $for name in tags:
+        <li>$name</li>
       </ul>
     </div>
 </div>
