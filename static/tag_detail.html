@@ -1,0 +1,8 @@
+$def with (tag, tasks)
+
+$var title = tag['name']
+
+<ul>
+  $for task in tasks:
+    <li><a href="/task/$task['_id']">$task['name']</a></li>
+</ul>
