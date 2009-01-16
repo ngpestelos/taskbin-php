@@ -1,6 +1,5 @@
 import web
 from couchdb import Server
-from tag import getTaskTags
 
 urls = (
   '/task/(.*)', 'task.Detail',
@@ -10,6 +9,14 @@ urls = (
 db = Server()['taskbin']
 
 render = web.template.render('static/', base='site')
+
+def getAll(type):
+    fun = '''
+    function(doc) {
+      if (doc.type && doc.type == '%s')
+        emit(Date.parse(doc.posted), doc);
+    }''' % (type)
+    return [r.value for r in db.query(fun)]
 
 def move(id, newtype):
     task = db[id]

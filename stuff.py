@@ -1,19 +1,10 @@
 import web
 from couchdb import Server
 from datetime import datetime
-from utils import getItems
-from tag import getAllTags
-
-urls = (
-  '/inbox', 'stuff.Inbox',
-  '/post', 'stuff.New'
-)
-
-render = web.template.render('static/', base='site')
 
 db = Server()['taskbin']
 
-def create(stuff):
+def post(stuff):
     row = dict(type='in', name=stuff, posted=datetime.today().ctime())
     db.create(row)
 

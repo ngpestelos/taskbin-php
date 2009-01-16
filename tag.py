@@ -12,6 +12,9 @@ urls = (
 
 db = Server()['taskbin']
 
+def getAll():
+    return []
+
 def getDocument(name):
     fun = '''
     function(doc) {
