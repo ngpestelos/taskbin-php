@@ -17,8 +17,8 @@ $var title = "New Stuff"
     <div id="alltags">
       <h4>Tags</h4>
       <ul>
-        $for (id, tag) in tags:
-          <li><a href="/tag/$id">$tag</a></li>
+        $for id, name in tags:
+          <li><a href="/tag/$id">$name</a></li>
       </ul>
     </div>
 </div>
