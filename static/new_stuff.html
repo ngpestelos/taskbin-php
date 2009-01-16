@@ -13,11 +13,12 @@ $var title = "New Stuff"
 </div>
 
 <div id="sidebar" class="span-6 last">
-  <div id="alltags">
-    <h4>Tags</h4>
-    <ul>
-      $for (id, tag) in tags:
-        <li><a href="/tag/$id">$tag</a></li>
-    </ul>
-  </div>
+  $if tags:
+    <div id="alltags">
+      <h4>Tags</h4>
+      <ul>
+        $for (id, tag) in tags:
+          <li><a href="/tag/$id">$tag</a></li>
+      </ul>
+    </div>
 </div>

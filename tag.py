@@ -6,6 +6,7 @@ import types
 render = web.template.render('static/', base='site')
 
 urls = (
+  '/tag/(.*)', 'tag.Detail',
   '/tag', 'tag.Tag'
 )
 
@@ -42,6 +43,39 @@ def getAllTags():
         emit(doc.name, doc);
     }'''
     return [(r.id, r.key) for r in db.query(fun)]
+
+def getTaskIds(tagId):
+    fun = '''
+    function(doc) {
+      if (doc.type == 'tasktag' && doc.tag == '%s')
+        emit(doc.task, null);
+    }''' % (tagId)
+    return [r.key for r in db.query(fun)]
+
+def getTasks(id):
+    fun = '''
+    function(doc) {
+      if (doc.type == 'tag' && doc._id == '%s')
+        emit([0, doc._id], doc);
+      else if (doc.type == 'tasktag' && doc.tag == '%s') {
+        if (doc.posted)
+          emit([1, doc.posted], doc.task);
+        else
+          emit([2, doc._id], doc.task);
+      }
+    }''' % (id, id)
+    return [(r.key, r.value) for r in db.query(fun)]
+
+class Detail:
+    def GET(self, tagId):
+        tasks = getTasks(tagId)
+        tag = tasks[0][1]
+        tasks = [t[1] for t in tasks[1:]]
+        #taskIds = getTaskIds(tagId)
+        #tasks = [db[id] for id in taskIds]
+        #tasks.sort()
+        #return "all tasks for %s" % tagId
+        return render.tag_detail(tag, tasks)
 
 class Tag:
     def POST(self):
