@@ -1,5 +1,6 @@
 import web
 import task, tag
+from web.net import websafe
 
 urls = (
   '/tag', 'Tag',
@@ -34,7 +35,8 @@ class NewStuff:
         raise web.seeother('/')
 
     def GET(self):
-        return render.new_stuff(tag.getAll())
+        tags = tag.getAll()
+        return render.new_stuff(tags)
 
 if __name__ == '__main__':
     app.run()

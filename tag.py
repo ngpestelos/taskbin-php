@@ -12,12 +12,38 @@ urls = (
 
 db = Server()['taskbin']
 
+def get(name):
+    fun = '''
+    function(doc) {
+      if (doc.type == 'tag' && doc.name == '%s')
+        emit(doc._id, doc);
+    }''' % name
+    return [(r.key, r.value['name']) for r in db.query(fun)]
+
+def makeTag(name):
+    if get(name):
+        return
+    else:
+        db.create({'type': 'tag', 'name' : name, 'posted' : \
+          datetime.today().ctime()})
+
 def post(id, name):
     task = db[id]
     if 'tags' in task and name in task['tags']:
         return
     task.setdefault('tags', []).append(name)
     db[id] = task 
+    makeTag(name)
+
+def getAll():
+    fun = '''
+    function(doc) {
+      if (doc.type == 'tag')
+        emit(doc.name, doc);
+    }'''
+    return [(r.id, r.key) for r in db.query(fun)]
+
+####
 
 def getDocument(name):
     fun = '''
@@ -34,10 +60,6 @@ def getTaskTags(taskId):
         emit(doc.name, doc);
     }''' % (taskId)
     return [(r.value['tag'], r.value['name']) for r in db.query(fun)]
-
-def makeTag(t):
-    row = dict(type='tag', name=t, posted=datetime.today().ctime())
-    return db.create(row)
 
 def addTask(aTag, taskId):
     row = dict(type='tasktag', tag=aTag['_id'], name=aTag['name'], task=taskId)
