@@ -17,18 +17,32 @@ $ tags.sort()
 
 $ id = task['_id']
 
-<div id="content" class="span-18">
+$ comments = []
+$if 'comments' in task:
+  $ comments = task['comments']
+
+$ comments.reverse()
+
+<div id="content" class="span-16 append-2">
   <div id="task" class="$bgclass">
     <h3>$task['name']</h3>
     <p class="posted">$task['posted']</p>
   </div>
-  <div id="cform">
+  <div id="comments">
     <form action="/comment" method="post">
       <input type="text" size="64" maxlength="64" name="comment"
         id="comment" />
       <input id="post" type="submit" value="Comment" />
       <input type="hidden" name="task" value="$id" />
     </form>
+    $if comments:
+      <ul>
+        $for c in comments:
+          <li>
+            <p>$c['comment']</p>
+            <p>$c['posted']</p>
+          </li>
+      </ul>
   </div>
 </div>
 <div id="sidebar" class="span-6 last">

@@ -24,6 +24,7 @@ class Comment:
     def POST(self):
         input = web.input()
         print input.comment
+        task.comment(input.task, input.comment)
         raise web.seeother('/task/%s' % input.task)
 
 class TagDetail:

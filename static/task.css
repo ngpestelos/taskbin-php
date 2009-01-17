@@ -14,5 +14,16 @@
 #tags { border: 1px solid black; margin-top: 10px; }
 #tags h4 { text-align: center; }
 
-#cform { margin-top: 15px; /*border: 1px solid black;*/ }
+#cform { margin-top: 15px; }
 #cform input#post { margin-left: 10px; }
+
+#comments { padding: 0; margin-top: 15px; /*border: 1px solid black;*/ }
+#comments ul {
+  margin: 10px 0 0 0;
+  list-style-type: none;
+}
+#comments li {
+  padding: 4px; 
+  border: 1px solid gray;
+  margin-bottom: 8px; 
+}

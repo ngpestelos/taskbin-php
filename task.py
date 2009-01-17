@@ -3,6 +3,12 @@ from datetime import datetime
 
 db = Server()['taskbin']
 
+def comment(id, comment):
+    task = db[id]
+    row = {'posted' : datetime.today().ctime(), 'comment' : comment}
+    task.setdefault('comments', []).append(row)
+    db[id] = task
+
 def post(stuff):
     row = dict(type='in', name=stuff, posted=datetime.today().ctime())
     db.create(row)
