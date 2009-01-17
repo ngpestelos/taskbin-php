@@ -3,6 +3,8 @@ import task, tag
 from web.net import websafe
 
 urls = (
+  '/trash', 'Trash',
+  '/move/(.*)', 'Move',
   '/tag', 'Tag',
   '/task/(.*)', 'Detail',
   '/inbox', 'Inbox',
@@ -13,6 +15,21 @@ urls = (
 app = web.application(urls, globals(), autoreload=True)
 
 render = web.template.render('static/', base='site')
+
+class Trash:
+    def GET(self):
+        return render.trash(task.getAll('trash'))
+
+class Move:
+    def GET(self, id):
+        input = web.input()
+        if 'trash' in input:
+            task.move(id, 'trash')
+        elif 'someday' in input:
+            task.move(id, 'someday')
+        elif 'next' in input:
+            task.move(id, 'next')
+        raise web.seeother('/')
 
 class Tag:
     def POST(self):

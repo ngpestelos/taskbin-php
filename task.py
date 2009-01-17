@@ -1,14 +1,7 @@
-import web
 from couchdb import Server
-
-urls = (
-  '/task/(.*)', 'task.Detail',
-  '/move/(.*)', 'task.Move'
-)
+from datetime import datetime
 
 db = Server()['taskbin']
-
-render = web.template.render('static/', base='site')
 
 def post(stuff):
     row = dict(type='in', name=stuff, posted=datetime.today().ctime())
@@ -18,31 +11,16 @@ def get(id):
     return db[id]
 
 def getAll(type):
+    ''' Returns a list of task for a given type.
+        Sorts results by latest posting date. '''
     fun = '''
     function(doc) {
       if (doc.type && doc.type == '%s')
         emit(Date.parse(doc.posted), doc);
     }''' % (type)
-    return [r.value for r in db.query(fun)]
+    return [r.value for r in db.query(fun, descending=True)]
 
 def move(id, newtype):
     task = db[id]
     task['type'] = newtype
     db[id] = task
-
-class Move:
-    def GET(self, id):
-        #return "moving %s to %s" % (id, web.input().b) 
-        input = web.input()
-        if 'trash' in input:
-            move(id, 'trash')
-        elif 'someday' in input:
-            move(id, 'someday')
-        elif 'next' in input:
-            move(id, 'next')
-        raise web.seeother('/') 
-
-class Detail:
-    def GET(self, id):
-        tags = getTaskTags(id)
-        return render.task_detail(db[id], tags)
