@@ -3,6 +3,7 @@ import task, tag
 from web.net import websafe
 
 urls = (
+  '/someday', 'Someday',
   '/trash', 'Trash',
   '/move/(.*)', 'Move',
   '/tag', 'Tag',
@@ -15,6 +16,10 @@ urls = (
 app = web.application(urls, globals(), autoreload=True)
 
 render = web.template.render('static/', base='site')
+
+class Someday:
+    def GET(self):
+        return render.someday(task.getAll('someday'))
 
 class Trash:
     def GET(self):
