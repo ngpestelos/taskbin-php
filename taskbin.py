@@ -3,6 +3,7 @@ import task, tag
 from web.net import websafe
 
 urls = (
+  '/comment', 'Comment',
   '/tag/(.*)', 'TagDetail',
   '/next', 'Next',
   '/someday', 'Someday',
@@ -18,6 +19,12 @@ urls = (
 app = web.application(urls, globals(), autoreload=True)
 
 render = web.template.render('static/', base='site')
+
+class Comment:
+    def POST(self):
+        input = web.input()
+        print input.comment
+        raise web.seeother('/task/%s' % input.task)
 
 class TagDetail:
     def GET(self, id):

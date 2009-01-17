@@ -15,10 +15,20 @@ $if 'tags' in task:
 
 $ tags.sort()
 
+$ id = task['_id']
+
 <div id="content" class="span-18">
   <div id="task" class="$bgclass">
     <h3>$task['name']</h3>
     <p class="posted">$task['posted']</p>
+  </div>
+  <div id="cform">
+    <form action="/comment" method="post">
+      <input type="text" size="64" maxlength="64" name="comment"
+        id="comment" />
+      <input id="post" type="submit" value="Comment" />
+      <input type="hidden" name="task" value="$id" />
+    </form>
   </div>
 </div>
 <div id="sidebar" class="span-6 last">

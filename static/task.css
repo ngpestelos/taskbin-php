@@ -1,4 +1,4 @@
-#moveto { padding: 8px; border: 1px solid black; margin-bottom: 10px; }
+#moveto { padding: 8px; border: 2px solid #16243A; margin-bottom: 10px; }
 #moveto h4 { margin-bottom: 5px; }
 #moveto p { margin: 0 0 2px 4px; }
 
@@ -13,3 +13,6 @@
 
 #tags { border: 1px solid black; margin-top: 10px; }
 #tags h4 { text-align: center; }
+
+#cform { margin-top: 15px; /*border: 1px solid black;*/ }
+#cform input#post { margin-left: 10px; }
