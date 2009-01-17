@@ -42,3 +42,17 @@ def getAll():
         emit(doc.name, doc);
     }'''
     return [(r.id, r.key) for r in db.query(fun)]
+
+def getTasks(id):
+    tag = db[id]
+    fun = '''
+    function(doc) {
+      if (doc.tags) {
+        for (var i = 0; i < doc.tags.length; i++) {
+          if (doc.tags[i] == '%s')
+            emit(doc.posted, doc);
+        }
+      }
+    }''' % tag['name']
+    tasks = [r.value for r in db.query(fun, descending=True)]
+    return (tag, tasks)

@@ -3,6 +3,7 @@ import task, tag
 from web.net import websafe
 
 urls = (
+  '/tag/(.*)', 'TagDetail',
   '/next', 'Next',
   '/someday', 'Someday',
   '/trash', 'Trash',
@@ -17,6 +18,11 @@ urls = (
 app = web.application(urls, globals(), autoreload=True)
 
 render = web.template.render('static/', base='site')
+
+class TagDetail:
+    def GET(self, id):
+        (t, tasks) = tag.getTasks(id)
+        return render.tag_detail(t, tasks)
 
 class Next:
     def GET(self):
