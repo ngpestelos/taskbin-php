@@ -1,6 +1,5 @@
 import web
 import task, tag
-from web.net import websafe
 
 urls = (
   '/comment', 'Comment',
@@ -23,7 +22,6 @@ render = web.template.render('static/', base='site')
 class Comment:
     def POST(self):
         input = web.input()
-        print input.comment
         task.comment(input.task, input.comment)
         raise web.seeother('/task/%s' % input.task)
 
@@ -71,13 +69,11 @@ class Inbox:
 
 class NewStuff:
     def POST(self):
-        input = web.input()
-        task.post(input.stuff)
+        task.post(web.input().stuff)
         raise web.seeother('/')
 
     def GET(self):
-        tags = tag.getAll()
-        return render.new_stuff(tags)
+        return render.new_stuff(tag.getAll())
 
 if __name__ == '__main__':
     app.run()
