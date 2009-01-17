@@ -1,8 +1,8 @@
-$def with (items)
+$def with (tasks)
 
-$var title = "Next Actions"
+$var title = "Inbox"
 
 <ul>
-  $for id, task in items:
+  $for task in tasks:
     <li><a href="/task/$id">$task['name']</a></li>
 </ul>
