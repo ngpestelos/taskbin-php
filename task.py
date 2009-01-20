@@ -1,5 +1,6 @@
 from couchdb import Server
 from datetime import datetime
+import tag
 
 db = Server()['taskbin']
 
@@ -10,8 +11,9 @@ def comment(id, comment):
     db[id] = task
 
 def post(stuff):
-    row = dict(type='in', name=stuff, posted=datetime.today().ctime())
-    db.create(row)
+    row = dict(type='in', name=stuff['post'], posted=datetime.today().ctime())
+    id = db.create(row)
+    tag.post(id, stuff['tag'])
 
 def get(id):
     return db[id]

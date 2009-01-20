@@ -69,7 +69,8 @@ class Inbox:
 
 class NewStuff:
     def POST(self):
-        task.post(web.input().stuff)
+        input = web.input()
+        task.post(dict(post=input.stuff, tag=input.tag))
         raise web.seeother('/')
 
     def GET(self):

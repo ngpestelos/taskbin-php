@@ -1,3 +1,7 @@
+#newstuff label { display: block; font-size: 18px; margin-bottom: 5px; }
+#newstuff textarea { margin-bottom: 25px; }
+#newstuff #submit { margin-top: 25px; }
+
 #header .search { padding-top: 5px; }
 
 .nav1 { padding-bottom: 5px; }
