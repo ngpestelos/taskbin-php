@@ -50,7 +50,7 @@ def getTasks(id):
       if (doc.tags) {
         for (var i = 0; i < doc.tags.length; i++) {
           if (doc.tags[i] == '%s')
-            emit(doc.posted, doc);
+            emit(Date.parse(doc.posted), doc);
         }
       }
     }''' % tag['name']
