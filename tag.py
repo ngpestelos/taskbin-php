@@ -47,7 +47,7 @@ def getTasks(id):
     tag = db[id]
     fun = '''
     function(doc) {
-      if (doc.tags) {
+      if (doc.tags && doc.type != 'trash') {
         for (var i = 0; i < doc.tags.length; i++) {
           if (doc.tags[i] == '%s')
             emit(Date.parse(doc.posted), doc);
