@@ -26,9 +26,9 @@ def getAll(type):
     function(doc) {
       if (doc.type == '%s' && doc.updated)
         emit(Date.parse(doc.updated), doc);
-      else
+      else if (doc.type == '%s')
         emit(Date.parse(doc.posted), doc);
-    }''' % (type)
+    }''' % (type, type)
     return [r.value for r in db.query(fun, descending=True)]
 
 def move(id, newtype):
