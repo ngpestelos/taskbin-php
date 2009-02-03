@@ -2,7 +2,18 @@ $def with (tasks)
 
 $var title = "Next"
 
+$if tasks:
+  $ numtasks = len(tasks)
+$else:
+  $ numtasks = 0
+
 <div id="content" class="span-24">
+  $if numtasks > 1:
+    <h4>$numtasks tasks</h4>
+  $elif numtasks == 1:
+    <h4>$numtasks task</h4>
+  $else:
+    <h4>No tasks</h4>
   <ul>
     $for task in tasks:
       $ id = task['_id']

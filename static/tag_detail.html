@@ -13,7 +13,7 @@ $var title = tag['name']
   $elif numtasks == 1:
     <h4>$numtasks task</h4>
   $else:
-    <h4>No tasks.</h4>
+    <h4>No tasks</h4>
   <ul>
     $for task in tasks:
       <li><a href="/task/$task['_id']">$task['name']</a></li>
