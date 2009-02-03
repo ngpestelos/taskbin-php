@@ -1,5 +1,10 @@
 $def with (tags)
 
+$if tags:
+  $ numtags = len(tags)
+$else:
+  $ numtags = 0
+
 $var title = "New Stuff"
 
 <div id="content" class="span-18">
@@ -23,7 +28,7 @@ $var title = "New Stuff"
 <div id="sidebar" class="span-6 last">
   $if tags:
     <div id="alltags">
-      <h4>All Tags</h4>
+      <h4>All Tags ($numtags)</h4>
       <ul>
         $for id, name in tags:
           <li><a href="/tag/$id">$name</a></li>
