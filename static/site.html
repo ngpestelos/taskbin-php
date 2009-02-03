@@ -10,21 +10,18 @@ $def with (self)
     <link rel="stylesheet" href="/static/bp/print.css" type="text/css" media="print" />
     <!--[if IE]><link rel="stylesheet" href="/static/bp/ie.css" type="text/css" media="screen, projection" /><![endif]-->
     <link rel="stylesheet" href="/static/main.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="/static/task.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="/static/forms.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="/static/sidebar.css" type="text/css" media="screen" />
   </head>
   <body>
     <div class="container">
       <div id="header">
         <div class="span-18"><h2>$self.title</h2></div>
-        <div class="span-6 search last">
+        <div class="span-6 last" id="search">
           <form method="post" action="/search">
             <label>Search: <input id="q" value="" name="q" size="24" 
               type="text"/></label>
           </form>
         </div>
-        <div class="span-24 nav1">
+        <div id="nav1" class="span-24">
           <a href="/">Home</a>
           <a href="/inbox">Inbox</a>
           <a href="/next">Next</a>
@@ -32,15 +29,11 @@ $def with (self)
           <a href="/trash">Trash</a>
         </div>
       </div><!-- end of header -->
-      <hr />
-      <div id="content">
-        $:self
-      </div><!-- end of content -->
-      <hr class="space" />
-      <hr />
-      <div id="footer">
-        &copy; 2009 <a href="mailto:ngpestelos@gmail.com">ngpestelos</a>
-      </div><!-- end of footer -->
+      <div id="content" class="span-24">
+      </div>
+      <div id="footer" class="span-24">
+        <h3>footar</h3>
+      </div>
     </div><!-- end of container -->
   </body>
 </html>

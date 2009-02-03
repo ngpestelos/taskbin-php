@@ -32,6 +32,7 @@ def post(id, name):
     if 'tags' in task and name in task['tags']:
         return
     task.setdefault('tags', []).append(name)
+    task['updated'] = datetime.today().ctime()
     db[id] = task 
     makeTag(name)
 
@@ -49,10 +50,12 @@ def getTasks(id):
     function(doc) {
       if (doc.tags && doc.type != 'trash') {
         for (var i = 0; i < doc.tags.length; i++) {
-          if (doc.tags[i] == '%s')
+          if (doc.tags[i] == '%s' && doc.updated)
+            emit(Date.parse(doc.updated), doc);
+          else if (doc.tags[i] == '%s')
             emit(Date.parse(doc.posted), doc);
         }
       }
-    }''' % tag['name']
+    }''' % (tag['name'], tag['name'])
     tasks = [r.value for r in db.query(fun, descending=True)]
     return (tag, tasks)
