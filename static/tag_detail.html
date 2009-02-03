@@ -1,8 +1,19 @@
 $def with (tag, tasks)
 
+$if tasks:
+  $ numtasks = len(tasks)
+$else:
+  $ numtasks = 0
+
 $var title = tag['name']
 
 <div id="content" class="span-24">
+  $if numtasks > 1:
+    <h4>$numtasks tasks</h4>
+  $elif numtasks == 1:
+    <h4>$numtasks task</h4>
+  $else:
+    <h4>No tasks.</h4>
   <ul>
     $for task in tasks:
       <li><a href="/task/$task['_id']">$task['name']</a></li>
