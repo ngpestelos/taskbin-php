@@ -24,3 +24,33 @@ body { font-size: 13px; }
 #alltags h4 { padding-top: 4px; margin-left: 4px; }
 
 #alltags ul { padding-bottom: 10px; }
+
+#moveto { margin-top: 20px; }
+
+#moveto, #tags {
+  padding: 8px;
+  border: 2px solid #797979;
+  margin-bottom: 10px;
+}
+
+#moveto h4, #tags h4 { margin-bottom: 5px; }
+#moveto p { margin: 0 0 2px 4px; }
+
+#tags ul { list-style-type: none; margin-left: 2px; }
+
+#task { padding: 8px; }
+.posted { margin: 0; padding: 0; }
+.trash { background-color: #E9C2BE; }
+.next { background-color: #C9EDCC; }
+.stuff { background-color: #E0FF92; }
+.someday { background-color: #C2CFF1; }
+
+#tform { margin-bottom: 10px; }
+#tform form { padding: 8px; background-color: #CCCCDD; }
+
+#cform { margin-top: 15px; }
+#cform input#post { margin-left: 10px; }
+
+#comments { padding: 0; margin-top: 15px; }
+#comments ul { margin: 10px 0 0 0; list-style-type: none; }
+#comments li { padding: 4px; border: 1px solid #797979; margin-bottom: 8px; }
