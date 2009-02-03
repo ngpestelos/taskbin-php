@@ -1,8 +1,8 @@
 body { font-size: 13px; }
 
+#newstuff { margin-top: 24px; }
 #newstuff label { display: block; font-size: 18px; margin-bottom: 5px; }
-#newstuff textarea { margin-bottom: 25px; }
-#newstuff #submit { margin-top: 25px; }
+#stuff { font-size: 18px; }
 
 #header #search { padding-top: 5px; }
 
@@ -17,3 +17,11 @@ body { font-size: 13px; }
 }
 
 #footer { border-top: 2px solid #797979; margin-top: 48px; }
+
+#content { margin-top: 10px; }
+
+#alltags { border: 1px solid #797979; margin-top: 10px; }
+
+#alltags h4 { padding-top: 4px; margin-left: 4px; }
+
+#alltags ul { padding-bottom: 10px; }
