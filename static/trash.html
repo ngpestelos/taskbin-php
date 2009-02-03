@@ -2,8 +2,10 @@ $def with (tasks)
 
 $var title = "Trash"
 
-<ul>
-  $for task in tasks:
-    $ id = task['_id']
-    <li><a href="/task/$id">$task['name']</a></li>
-</ul>
+<div id="content" class="span-24">
+  <ul>
+    $for task in tasks:
+      $ id = task['_id']
+      <li><a href="/task/$id">$task['name']</a></li>
+  </ul>
+</div>
