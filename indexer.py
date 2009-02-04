@@ -26,16 +26,14 @@ def getTaskIds():
     }'''
     return [r.value['taskid'] for r in db.query(fun)]
 
-def build():
-    # add all document IDs
-    for type in ['next']:
-        [db.create(dict(taskid=t['_id'], type='task')) \
-          for t in task.getAll(type)]
+def makeIndex(task):
+    words = splitwords(task['name'])
+    for word in words:
+        db.create({'docId': task['_id'], 'word': word})
 
-    # for each document, split words from names
-    for doc in getTaskIds():
-        t = task.get(doc)
-        print splitwords(t['name'])
+def build():
+    for type in ['next', 'someday']:
+        [makeIndex(t) for t in task.getAll(type)]
 
 if __name__ == '__main__':
     destroy()
