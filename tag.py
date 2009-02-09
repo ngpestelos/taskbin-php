@@ -35,7 +35,7 @@ def post(id, tagname):
         task.setdefault('tags', []).append(tagname)
         task['updated'] = datetime.today().ctime()
         db[id] = task 
-        makeTag(name)
+        makeTag(tagname)
 
 def getAll():
     fun = '''
