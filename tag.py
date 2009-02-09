@@ -27,14 +27,15 @@ def makeTag(name):
         db.create({'type': 'tag', 'name' : name, 'posted' : \
           datetime.today().ctime()})
 
-def post(id, name):
-    task = db[id]
-    if 'tags' in task and name in task['tags']:
-        return
-    task.setdefault('tags', []).append(name)
-    task['updated'] = datetime.today().ctime()
-    db[id] = task 
-    makeTag(name)
+def post(id, tagname):
+    if tagname:
+        task = db[id] 
+        if 'tags' in task and tagname in task['tags']:
+            return
+        task.setdefault('tags', []).append(tagname)
+        task['updated'] = datetime.today().ctime()
+        db[id] = task 
+        makeTag(name)
 
 def getAll():
     fun = '''
