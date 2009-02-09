@@ -20,7 +20,7 @@ def get(id):
     return db[id]
 
 def getAll(type):
-    ''' Returns a list of task for a given type.
+    ''' Returns a list of tasks for a given type.
         Sorts results by latest posting date. '''
     fun = '''
     function(doc) {
