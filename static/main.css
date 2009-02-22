@@ -21,9 +21,11 @@ body { font-size: 13px; }
 
 #alltags { border: 1px solid #797979; margin-top: 20px; }
 
-#alltags h4 { padding-top: 4px; margin-left: 4px; }
+#alltags h3 { padding-top: 4px; text-align: center; }
 
-#alltags ul { padding-bottom: 10px; }
+#alltags ul { padding-bottom: 10px; list-style-type: none; }
+
+#alltags li { margin-left: -8px; margin-bottom: 2px; font-size: 14px; }
 
 #moveto { margin-top: 20px; }
 
