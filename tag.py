@@ -1,14 +1,6 @@
-import web
 from couchdb import Server
 from datetime import datetime
 import types
-
-render = web.template.render('static/', base='site')
-
-urls = (
-  '/tag/(.*)', 'tag.Detail',
-  '/tag', 'tag.Tag'
-)
 
 db = Server()['taskbin']
 
@@ -60,3 +52,9 @@ def getTasks(id):
     }''' % (tag['name'], tag['name'])
     tasks = [r.value for r in db.query(fun, descending=True)]
     return (tag, tasks)
+
+def create_views():
+    pass
+
+def delete_views():
+    pass
