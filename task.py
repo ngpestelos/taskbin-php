@@ -19,18 +19,6 @@ def post(stuff):
 def get(id):
     return db[id]
 
-#def getAll(type):
-#    ''' Returns a list of tasks for a given type.
-#        Sorts results by latest posting date. '''
-#    fun = '''
-#    function(doc) {
-#      if (doc.type == '%s' && doc.updated)
-#        emit(Date.parse(doc.updated), doc);
-#      else if (doc.type == '%s')
-#        emit(Date.parse(doc.posted), doc);
-#    }''' % (type, type)
-#    return [r.value for r in db.query(fun, descending=True)]
-
 def getAll(type):
     ''' Returns a list of tasks for a given type.
 
