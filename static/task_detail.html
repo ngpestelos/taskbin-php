@@ -29,7 +29,7 @@ $ comments.reverse()
     <p class="posted">$task['posted']</p>
   </div>
   <div id="comments">
-    <form action="/comment" method="post">
+    <form action="/t/comment" method="post">
       <input type="text" size="64" maxlength="64" name="comment"
         id="comment" />
       <input id="post" type="submit" value="Comment" />
@@ -49,14 +49,14 @@ $ comments.reverse()
   <div id="moveto">
     <h4>Move to:</h4>
     $if task['type'] != 'trash':
-      <p><a href="/move/$task['_id']?trash">Trash</a></p>
+      <p><a href="/t/move/$task['_id']?trash">Trash</a></p>
     $if task['type'] != 'someday':
-      <p><a href="/move/$task['_id']?someday">Someday</a></p>
+      <p><a href="/t/move/$task['_id']?someday">Someday</a></p>
     $if task['type'] != 'next':
-      <p><a href="/move/$task['_id']?next">Next</a></p>
+      <p><a href="/t/move/$task['_id']?next">Next</a></p>
   </div>
   <div id="tform">
-    <form action="/tag" method="post">
+    <form action="/t/tag" method="post">
       <input type="text" name="tag" />
       <input type="submit" value="Tag" />
       <input type="hidden" name="task" value="$task.id" />

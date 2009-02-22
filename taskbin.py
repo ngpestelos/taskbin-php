@@ -1,18 +1,21 @@
+#!/usr/bin/env python
+
 import web
 import task, tag
 
 urls = (
-  '/comment', 'Comment',
-  '/tag/(.*)', 'TagDetail',
-  '/next', 'Next',
-  '/someday', 'Someday',
-  '/trash', 'Trash',
-  '/move/(.*)', 'Move',
-  '/tag', 'Tag',
-  '/task/(.*)', 'Detail',
-  '/inbox', 'Inbox',
-  '/post', 'NewStuff',
-  '/',  'NewStuff'
+  '/t/(.*)/', 'Redirect',
+  '/t/comment', 'Comment',
+  '/t/tag/(.*)', 'TagDetail',
+  '/t/next', 'Next',
+  '/t/someday', 'Someday',
+  '/t/trash', 'Trash',
+  '/t/move/(.*)', 'Move',
+  '/t/tag', 'Tag',
+  '/t/task/(.*)', 'Detail',
+  '/t/inbox', 'Inbox',
+  '/t/post', 'NewStuff',
+  '/t', 'NewStuff'
 )
 
 app = web.application(urls, globals(), autoreload=True)
@@ -23,7 +26,7 @@ class Comment:
     def POST(self):
         input = web.input()
         task.comment(input.task, input.comment)
-        raise web.seeother('/task/%s' % input.task)
+        raise web.seeother('/t/task/%s' % input.task)
 
 class TagDetail:
     def GET(self, id):
@@ -51,13 +54,13 @@ class Move:
             task.move(id, 'someday')
         elif 'next' in input:
             task.move(id, 'next')
-        raise web.seeother('/')
+        raise web.seeother('/t')
 
 class Tag:
     def POST(self):
         input = web.input()
         tag.post(input.task, input.tag)
-        raise web.seeother('/task/%s' % input.task)
+        raise web.seeother('/t/task/%s' % input.task)
 
 class Detail:
     def GET(self, id):
@@ -71,10 +74,14 @@ class NewStuff:
     def POST(self):
         input = web.input()
         task.post(dict(post=input.stuff, tag=input.tag))
-        raise web.seeother('/')
+        raise web.seeother('/t')
 
     def GET(self):
         return render.new_stuff(tag.getAll())
+
+class Redirect:
+    def GET(self, path):
+        raise web.seeother('/t' + path)
 
 if __name__ == '__main__':
     app.run()

@@ -18,7 +18,7 @@ $var title = tag['name']
     $for task in tasks:
       <tr>
         <td>$task['type']</td>
-        <td><a href="/task/$task['_id']">$task['name']</a></li></td>
+        <td><a href="/t/task/$task['_id']">$task['name']</a></li></td>
         <td>
             $if 'updated' in task:
               $ last_update = task['updated']
