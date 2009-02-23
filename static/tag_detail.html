@@ -14,18 +14,20 @@ $var title = tag['name']
     <h4>$numtasks task</h4>
   $else:
     <h4>No tasks</h4>
-  <table>
-    $for task in tasks:
-      <tr>
-        <td>$task['type']</td>
-        <td><a href="/t/task/$task['_id']">$task['name']</a></li></td>
-        <td>
+  <div id="task_table">
+    <table>
+      $for task in tasks:
+        <tr>
+          <td>$task['type']</td>
+          <td><a href="/t/task/$task['_id']">$task['name']</a></td>
+          <td>
             $if 'updated' in task:
               $ last_update = task['updated']
             $else: $ last_update = task['posted']
             
             $last_update
-        </td>
-      </tr>
-  </table>
+          </td>
+        </tr>
+    </table>
+  </div>
 </div>
