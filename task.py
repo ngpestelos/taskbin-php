@@ -69,6 +69,12 @@ def create_views():
                       if (doc.type == 'trash')
                         emit(Date.parse(doc.posted), doc);
                     }"""
+        },
+        "names": {
+          "map": """function(doc) {
+                      if (doc.name)
+                        emit(doc._id, doc.name);
+                    }"""
         }
       }
     }
