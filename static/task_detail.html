@@ -1,4 +1,4 @@
-$def with (task)
+$def with (task, tags)
 
 $var title = "Task Details"
 $ bgclass = "stuff"
@@ -8,10 +8,6 @@ $elif task['type'] == 'someday':
   $ bgclass = 'someday'
 $elif task['type'] == 'next':
   $ bgclass = 'next'
-
-$ tags = []
-$if 'tags' in task:
-  $ tags = task['tags']
 
 $ tags.sort()
 
@@ -66,8 +62,8 @@ $ comments.reverse()
     <div id="tags">
       <h4>Tags</h4>
       <ul>
-        $for name in tags:
-        <li>$name</li>
+        $for tag in tags:
+        <li><a href="/t/tag/$tag[0][0]">$tag[0][1]</a></li>
       </ul>
     </div>
 </div>

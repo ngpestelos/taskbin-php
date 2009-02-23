@@ -64,7 +64,9 @@ class Tag:
 
 class Detail:
     def GET(self, id):
-        return render.task_detail(task.get(id))
+        doc = task.get(id)
+        tags = [tag.get(name) for name in doc['tags']]
+        return render.task_detail(task.get(id), tags)
 
 class Inbox:
     def GET(self):
