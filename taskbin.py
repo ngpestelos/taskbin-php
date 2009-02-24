@@ -2,6 +2,7 @@
 
 import web
 import task, tag
+import searchengine
 
 urls = (
   '/t/(.*)/', 'Redirect',
@@ -15,6 +16,7 @@ urls = (
   '/t/task/(.*)', 'Detail',
   '/t/inbox', 'Inbox',
   '/t/post', 'NewStuff',
+  '/t/search', 'Search',
   '/t', 'NewStuff'
 )
 
@@ -84,6 +86,11 @@ class NewStuff:
 class Redirect:
     def GET(self, path):
         raise web.seeother('/t' + path)
+
+class Search:
+    def POST(self):
+        input = web.input()
+        return searchengine.find(input.q)
 
 if __name__ == '__main__':
     app.run()
