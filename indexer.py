@@ -5,7 +5,7 @@ index_db = Server()['taskbin_index']
 task_db = Server()['taskbin']
 
 stopwords = ['and', 'or', 'the', 'a', 'of', 'to', 'in', 'is', 'it', 'for', \
-  'at', 'on']
+  'at', 'on', 'with']
 
 def get_document(word):
     wordindex = [(r.key, r.value) for r in index_db.view('index/words', key=word)]
@@ -42,11 +42,7 @@ def create_words():
         for word in indexable:
             doc = get_document(word)
             if doc:
-                doc.setdefault('tasks', [])
-                if id not in doc['tasks']:
-                    doc['tasks'].append(id)
-                wordId = doc['_id']
-                index_db[wordId] = doc
+                addtoindex(doc, id)
             else:
                 index_db.create({'word': word, 'tasks': [id]})
         i += 1
@@ -56,3 +52,20 @@ def delete_words():
     for word, id in words:
         doc = index_db[id]
         index_db.delete(doc)
+
+def post(taskId, name):
+    words = stripper.getwords(name)
+    indexable = [w for w in words if w not in stopwords]
+    for word in indexable:
+        doc = get_document(word)
+        if doc:
+            addtoindex(doc, taskId)
+        else:
+            index_db.create({'word': word, 'tasks': [taskId]})
+
+def addtoindex(doc, id):
+    doc.setdefault('tasks', [])
+    if id not in doc['tasks']:
+        doc['tasks'].append(id)
+    wordId = doc['_id']
+    index_db[wordId] = doc
