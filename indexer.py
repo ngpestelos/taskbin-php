@@ -8,12 +8,14 @@ stopwords = ['and', 'or', 'the', 'a', 'of', 'to', 'in', 'is', 'it', 'for', \
   'at', 'on', 'with']
 
 def get_document(word):
-    wordindex = [(r.key, r.value) for r in index_db.view('index/words', key=word)]
+    wordindex = [(r.key, r.value) for r in \
+      index_db.view('index/words', key=word)]
     if wordindex:
         id = wordindex[0][1]
         return index_db[id]
     else:
-        return None
+        id = index_db.create({'word': word})
+        return index_db[id]
 
 def create_views():
     doc = {
@@ -31,6 +33,15 @@ def create_views():
 def delete_views():
     del index_db['_design/index']
 
+def addtoindex(words, taskId):
+    for word in words:
+        doc = get_document(word)
+        doc.setdefault('tasks', [])
+        if taskId not in doc['tasks']:
+            doc['tasks'].append(taskId)
+            id = doc['_id']
+            index_db[id] = doc
+
 def create_words():
     tasks = [(r.key, r.value) for r in task_db.view('tasks/names')]
     i = 1
@@ -38,13 +49,7 @@ def create_words():
     for id, name in tasks:
         print "Indexing %d of %d tasks" % (i, numtasks)
         words = stripper.getwords(name)
-        indexable = [w for w in words if w not in stopwords]
-        for word in indexable:
-            doc = get_document(word)
-            if doc:
-                addtoindex(doc, id)
-            else:
-                index_db.create({'word': word, 'tasks': [id]})
+        addtoindex(words, id)
         i += 1
 
 def delete_words():
@@ -63,9 +68,9 @@ def post(taskId, name):
         else:
             index_db.create({'word': word, 'tasks': [taskId]})
 
-def addtoindex(doc, id):
-    doc.setdefault('tasks', [])
-    if id not in doc['tasks']:
-        doc['tasks'].append(id)
-    wordId = doc['_id']
-    index_db[wordId] = doc
+#def addtoindex(doc, id):
+#    doc.setdefault('tasks', [])
+#    if id not in doc['tasks']:
+#        doc['tasks'].append(id)
+#    wordId = doc['_id']
+#    index_db[wordId] = doc
