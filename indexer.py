@@ -1,40 +1,54 @@
+import stripper
 from couchdb import Server
-import task, re
 
-db = Server()['taskbin_index']
+index_db = Server()['taskbin_index']
+task_db = Server()['taskbin']
 
-stopwords = ['and', 'or', 'the', 'a', 'of', 'to', 'in', 'is', 'it']
+stopwords = ['and', 'or', 'the', 'a', 'of', 'to', 'in', 'is', 'it', 'for', \
+  'at', 'on']
 
-def destroy():
-    fun = '''
-    function(doc) {
-      emit(doc._id, doc);
-    }'''
-    docs = [r.value for r in db.query(fun)]
-    for doc in docs:
-        db.delete(doc)
+def get_document(word):
+    wordindex = [(r.key, r.value) for r in index_db.view('index/words', key=word)]
+    if wordindex:
+        id = wordindex[0][1]
+        return index_db[id]
+    else:
+        return None
 
-def splitwords(text):
-    words = [s.lower() for s in re.compile(r'\W+').split(text)]
-    return [w for w in words if w not in stopwords]
+def create_views():
+    doc = {
+      "language": "javascript",
+      "views": {
+        "words": {
+          "map": """function(doc) {
+                      if (doc.word) emit(doc.word, doc._id);
+                    }"""
+        }
+      }
+    }
+    index_db['_design/index'] = doc
 
-def getTaskIds():
-    fun = '''
-    function(doc) {
-      if (doc.type == 'task')
-        emit(doc._id, doc);
-    }'''
-    return [r.value['taskid'] for r in db.query(fun)]
+def delete_views():
+    del index_db['_design/index']
 
-def makeIndex(task):
-    words = splitwords(task['name'])
-    for word in words:
-        db.create({'docId': task['_id'], 'word': word})
+def create_words():
+    tasks = [(r.key, r.value) for r in task_db.view('tasks/names')]
+    for id, name in tasks:
+        words = stripper.getwords(name)
+        indexable = [w for w in words if w not in stopwords]
+        for word in indexable:
+            doc = get_document(word)
+            if doc:
+                doc.setdefault('tasks', [])
+                if id not in doc['tasks']:
+                    doc['tasks'].append(id)
+                wordId = doc['_id']
+                index_db[wordId] = doc
+            else:
+                index_db.create({'word': word, 'tasks': [id]})
 
-def build():
-    for type in ['next', 'someday']:
-        [makeIndex(t) for t in task.getAll(type)]
-
-if __name__ == '__main__':
-    destroy()
-    build()
+def delete_words():
+    words = [(r.key, r.value) for r in index_db.view('index/words')]
+    for word, id in words:
+        doc = index_db[id]
+        index_db.delete(doc)
