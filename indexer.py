@@ -5,7 +5,7 @@ index_db = Server()['taskbin_index']
 task_db = Server()['taskbin']
 
 stopwords = ['and', 'or', 'the', 'a', 'of', 'to', 'in', 'is', 'it', 'for', \
-  'at', 'on', 'with']
+  'at', 'on', 'with', 'which', 'this', 'that']
 
 def get_document(word):
     wordindex = [(r.key, r.value) for r in \
@@ -34,7 +34,8 @@ def delete_views():
     del index_db['_design/index']
 
 def addtoindex(words, taskId):
-    for word in words:
+    indexable = [w for w in words if w not in stopwords]
+    for word in indexable:
         doc = get_document(word)
         doc.setdefault('tasks', [])
         if taskId not in doc['tasks']:
