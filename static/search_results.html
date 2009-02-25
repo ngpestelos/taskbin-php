@@ -1,0 +1,38 @@
+$def with (search, tasks, tags)
+
+$var title = "Search results for '" + search + "'"
+
+$if tasks:
+  $ numtasks = len(tasks)
+$else:
+  $ numtasks = 0
+
+$if tags:
+  $ numtags = len(tags)
+$else:
+  $ numtags = 0
+
+<div id="content" class="span-24">
+  $if numtasks > 1:
+    <h4>$numtasks tasks</h4>
+  $elif numtasks == 1:
+    <h4>$numtasks task</h4>
+  $else:
+    <h4>No tasks.</h4>
+  <ul>
+    $for task in tasks:
+      $ id = task['_id']
+      <li><a href="/t/task/$id">$task['name']</a></li>
+  </ul>
+  $if numtags > 1:
+    <h4>$numtags tags</h4>
+  $elif numtags == 1:
+    <h4>$numtags tag</h4>
+  $else:
+    <h4>No tags.</h4>
+  <ul>
+    $for tag in tags:
+      $ id = tag['_id']
+      <li><a href="/t/tag/$id">$tag['name']</a></li>
+  </ul>
+</div>

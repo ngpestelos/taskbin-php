@@ -90,7 +90,10 @@ class Redirect:
 class Search:
     def POST(self):
         input = web.input()
-        return searchengine.find(input.q)
+        results = searchengine.find(input.q)
+        tasks = [r for r in results if r['type'] != 'tag']
+        tags = [r for r in results if r['type'] == 'tag']
+        return render.search_results(input.q, tasks, tags)
 
 if __name__ == '__main__':
     app.run()
