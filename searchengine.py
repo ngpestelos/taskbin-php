@@ -13,7 +13,7 @@ def find(words):
         return []
 
     doc = index_db[firstrow[0]]
-    tasks = doc['tasks']
+    tasks = doc.get('tasks', '')
     for n in q[1:]:
         nextrow = [r.id for r in index_db.view('index/words', key=n)]
         if not nextrow:

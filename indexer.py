@@ -57,20 +57,3 @@ def delete_words():
     for word, id in words:
         doc = index_db[id]
         index_db.delete(doc)
-
-def post(taskId, name):
-    words = stripper.getwords(name)
-    indexable = [w for w in words if w not in stopwords]
-    for word in indexable:
-        doc = get_document(word)
-        if doc:
-            addtoindex(doc, taskId)
-        else:
-            index_db.create({'word': word, 'tasks': [taskId]})
-
-#def addtoindex(doc, id):
-#    doc.setdefault('tasks', [])
-#    if id not in doc['tasks']:
-#        doc['tasks'].append(id)
-#    wordId = doc['_id']
-#    index_db[wordId] = doc

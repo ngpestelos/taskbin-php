@@ -1,6 +1,6 @@
 from couchdb import Server
 from datetime import datetime
-import tag, indexer
+import tag
 
 db = Server()['taskbin']
 
@@ -15,7 +15,6 @@ def post(stuff):
     task = dict(type='in', name=stuff['post'], posted=datetime.today().ctime())
     id = db.create(task)
     tag.post(id, stuff['tag'])
-    indexer.post(id, stuff['post'])
 
 def get(id):
     return db[id]
