@@ -5,7 +5,7 @@ $def with (self)
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>$self.title</title>
+    <title>$self.title - taskbin</title>
     <link rel="stylesheet" href="/bp/screen.css" type="text/css" media="screen, projection" />
     <link rel="stylesheet" href="/bp/print.css" type="text/css" media="print" />
     <!--[if IE]><link rel="stylesheet" href="/bp/ie.css" type="text/css" media="screen, projection" /><![endif]-->
@@ -14,12 +14,7 @@ $def with (self)
   <body>
     <div class="container">
       <div id="header">
-        <div class="span-18"><h2>$self.title</h2></div>
-        <div class="span-6 last" id="search">
-          <form method="post" action="/t/search">
-            <input id="q" value="" name="q" size="24" type="text"/>
-          </form>
-        </div>
+        <div class="span-24"><h2>$self.title</h2></div>
         <div id="nav1" class="span-24">
           <a href="/t">Home</a>
           <a href="/t/inbox">Inbox</a>
@@ -29,6 +24,7 @@ $def with (self)
         </div>
       </div><!-- end of header -->
       $:self
+      <div id="footer" class="span-24" />
     </div><!-- end of container -->
   </body>
 </html>

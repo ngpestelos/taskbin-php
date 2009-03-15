@@ -33,13 +33,13 @@ li { margin-bottom: 2px; }
 
 #moveto { margin-top: 20px; }
 
-#moveto, #tags {
+#moveto {
   padding: 8px;
   border: 1px solid #797979;
   margin-bottom: 10px;
 }
 
-#moveto h4, #tags h4 { margin-bottom: 5px; }
+#moveto h4 { margin-bottom: 5px; }
 #moveto p { margin: 0 0 2px 4px; }
 
 #tags ul { list-style-type: none; margin-left: 2px; }
@@ -61,6 +61,6 @@ li { margin-bottom: 2px; }
 #comments ul { margin: 10px 0 0 0; list-style-type: none; }
 #comments li { padding: 4px; border: 1px solid #797979; margin-bottom: 8px; }
 
-#index_search {
-  margin: 80px auto 80px auto;
-}
+#index_search { margin: 80px auto 80px auto; }
+
+#tags { margin-top: 20px; }
