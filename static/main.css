@@ -44,7 +44,6 @@ li { margin-bottom: 2px; }
 
 #tags ul { list-style-type: none; margin-left: 2px; }
 
-#task { padding: 8px; }
 .posted { margin: 0; padding: 0; }
 .trash { background-color: #E9C2BE; }
 .next { background-color: #C9EDCC; }
@@ -63,4 +62,8 @@ li { margin-bottom: 2px; }
 
 #index_search { margin: 80px auto 80px auto; }
 
+.tform { margin-top: 80px; margin-bottom: 80px; }
+
 #tags { margin-top: 20px; }
+
+#stuff label { display: block; }
