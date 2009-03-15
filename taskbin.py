@@ -17,6 +17,8 @@ urls = (
   '/t/inbox', 'Inbox',
   '/t/post', 'NewStuff',
   '/t/search', 'Search',
+  '/t/tags', 'AllTags',
+  '/t/new', 'Stuff',
   '/t', 'Index'
 )
 
@@ -99,6 +101,14 @@ class Search:
 class Index:
     def GET(self):
         return render_nobase.index()
+
+class AllTags:
+    def GET(self):
+        return "show all tags"
+
+class Stuff:
+    def GET(self):
+        return "new stuff"
 
 if __name__ == '__main__':
     app.run()
