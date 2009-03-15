@@ -15,7 +15,6 @@ urls = (
   '/t/move/(.*)', 'Move',
   '/t/task/(.*)', 'Detail',
   '/t/inbox', 'Inbox',
-  '/t/post', 'NewStuff',
   '/t/search', 'Search',
   '/t/tags', 'Tags',
   '/t/new', 'Stuff',
@@ -77,15 +76,6 @@ class Inbox:
     def GET(self):
         return render.inbox(task.getAll('in'))
 
-class NewStuff:
-    def POST(self):
-        input = web.input()
-        task.post(dict(post=input.stuff, tag=input.tag))
-        raise web.seeother('/t')
-
-    def GET(self):
-        return render.new_stuff(tag.getAll())
-
 class Redirect:
     def GET(self, path):
         raise web.seeother('/t' + path)
@@ -109,6 +99,10 @@ class Tags:
 class Stuff:
     def GET(self):
         return render.stuff()
+    def POST(self):
+        input = web.input()
+        task.post(dict(post=input.task, tag=input.tag))
+        raise web.seeother('/t')
 
 if __name__ == '__main__':
     app.run()
