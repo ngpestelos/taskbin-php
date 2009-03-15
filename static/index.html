@@ -14,25 +14,26 @@
       <div id="header">
         <div class="span-24"><h2>taskbin</h2></div>
         <div id="nav1" class="span-24">
-          <a href="/t/new">New</a>
+          <a href="/t">Home</a>
           <a href="/t/inbox">Inbox</a>
           <a href="/t/next">Next</a>
           <a href="/t/someday">Someday</a>
           <a href="/t/trash">Trash</a>
-          <a href="/t/tags">Tags</a>
         </div>
       </div><!-- end of header -->
       <div id="index_search" class="prepend-7 span-17">
-        <form action="/search" method="post">
+        <form action="/t/search" method="post">
           <p>
             <input type="text" name="q" id="q" size="47" />
             <input type="submit" value="Search" />
           </p>
         </form>
+        <ul>
+          <li><a href="/t/new">New Stuff</a></li>
+          <li><a href="/t/tags">Tags</a></li>
+        </ul>
       </div>
-      <div id="footer" class="span-24">
-        &nbsp;
-      </div>
+      <div id="footer" class="span-24" />
     </div><!-- end of container -->
   </body>
 </html>
