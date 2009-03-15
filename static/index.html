@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>taskbin</title>
+    <link rel="stylesheet" href="/bp/screen.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/bp/print.css" type="text/css" media="print" />
+    <!--[if IE]><link rel="stylesheet" href="/bp/ie.css" type="text/css" media="screen, projection" /><![endif]-->
+    <link rel="stylesheet" href="/static/taskbin/main.css" type="text/css" media="screen" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="header">
+        <div class="span-24"><h2>taskbin</h2></div>
+        <div id="nav1" class="span-24">
+          <a href="/t/new">New</a>
+          <a href="/t/inbox">Inbox</a>
+          <a href="/t/next">Next</a>
+          <a href="/t/someday">Someday</a>
+          <a href="/t/trash">Trash</a>
+        </div>
+      </div><!-- end of header -->
+      <div id="index_search" class="prepend-7 span-17">
+        <form action="/search" method="post">
+          <p>
+            <input type="text" name="q" id="q" size="47" />
+            <input type="submit" value="Search" />
+          </p>
+        </form>
+      </div>
+      <div id="footer" class="span-24">
+        &nbsp;
+      </div>
+    </div><!-- end of container -->
+  </body>
+</html>

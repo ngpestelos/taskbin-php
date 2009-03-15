@@ -17,12 +17,13 @@ urls = (
   '/t/inbox', 'Inbox',
   '/t/post', 'NewStuff',
   '/t/search', 'Search',
-  '/t', 'NewStuff'
+  '/t', 'Index'
 )
 
 app = web.application(urls, globals(), autoreload=True)
 
 render = web.template.render('static/', base='site')
+render_nobase = web.template.render('static/')
 
 class Comment:
     def POST(self):
@@ -94,6 +95,10 @@ class Search:
         tasks = [r for r in results if r['type'] != 'tag']
         tags = [r for r in results if r['type'] == 'tag']
         return render.search_results(input.q, tasks, tags)
+
+class Index:
+    def GET(self):
+        return render_nobase.index()
 
 if __name__ == '__main__':
     app.run()
