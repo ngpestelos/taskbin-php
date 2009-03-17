@@ -1,13 +1,6 @@
 $def with (task, tags)
 
 $var title = "Task Details"
-$ bgclass = "stuff"
-$if task['type'] == 'trash':
-  $ bgclass = 'trash'
-$elif task['type'] == 'someday':
-  $ bgclass = 'someday'
-$elif task['type'] == 'next':
-  $ bgclass = 'next'
 
 $ tags.sort()
 
@@ -19,38 +12,24 @@ $if 'comments' in task:
 
 $ comments.reverse()
 
-<div id="content" class="span-16 append-2">
-  <div id="task" class="$bgclass">
+$ type = task['type']
+
+<div id="content" class="prepend-1 span-15">
+  <div id="taskbox" class="$type">
     <h3>$task['name']</h3>
     <p class="posted">$task['posted']</p>
-  </div>
-  <div id="comments">
-    <form action="/t/comment" method="post">
-      <input type="text" size="64" maxlength="64" name="comment"
-        id="comment" />
-      <input id="post" type="submit" value="Comment" />
-      <input type="hidden" name="task" value="$id" />
-    </form>
-    $if comments:
-      <ul>
-        $for c in comments:
-          <li>
-            <p>$c['comment']</p>
-            <p class="posted">$c['posted']</p>
-          </li>
-      </ul>
+    <ul class="options">
+      <li class="move">Move:</li>
+      $if type != 'next':
+        <li><a href="/t/move/$id?next">Next</a></li>
+      $if type != 'someday':
+        <li><a href="/t/move/$id?someday">Someday</a></li>
+      $if type != 'trash':
+        <li><a href="/t/move/$id?trash">Trash</a></li>
+    </ul>
   </div>
 </div>
-<div id="sidebar" class="span-6 last">
-  <div id="moveto">
-    <h4>Move to:</h4>
-    $if task['type'] != 'trash':
-      <p><a href="/t/move/$task['_id']?trash">Trash</a></p>
-    $if task['type'] != 'someday':
-      <p><a href="/t/move/$task['_id']?someday">Someday</a></p>
-    $if task['type'] != 'next':
-      <p><a href="/t/move/$task['_id']?next">Next</a></p>
-  </div>
+<div id="sidebar" class="prepend-1 span-6 last">
   <div id="tform">
     <form action="/t/tag" method="post">
       <input type="text" name="tag" />
