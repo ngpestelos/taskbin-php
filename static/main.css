@@ -1,3 +1,8 @@
+body {
+  font-size: 14px;
+  font-family: Helvetica, sans-serif; 
+}
+
 li { margin-bottom: 2px; }
 
 #newstuff { border: 1px solid #797979; padding-left: 12px; padding-top: 12px; }
@@ -13,9 +18,10 @@ li { margin-bottom: 2px; }
 
 #nav1 a:link,
 #nav1 a:visited {
-  color: #32381E;
+  color: #8A8C67;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 300;
+  font-variant: small-caps;
   margin-right: 8px;
 }
 
