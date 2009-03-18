@@ -33,11 +33,11 @@ li { margin-bottom: 2px; }
 
 #alltags li { margin-left: -8px; }
 
+.posted { font-size: 10px; font-style: italic; }
 
 #taskbox { padding: 8px; border: 1px solid black; }
-#taskbox h3 { margin-bottom: 1px; }
+#taskbox h4 { margin-bottom: 1px; }
 #taskbox p { margin-bottom: 1px; }
-#taskbox .posted { font-size: 10px; font-style: italic; }
 #taskbox .options { text-align: right; }
 #taskbox .move { font-weight: bold; margin-right: 12px; }
 #taskbox ul {
@@ -54,6 +54,8 @@ li { margin-bottom: 2px; }
 .in { background-color: #E2F2C6; }
 .someday { background-color: #C2CFF1; }
 
+.comment_header { font-weight: bold; margin-top: 16px; }
+
 #tform { margin-top: 20px; }
 
 #cform { margin-top: 15px; }
@@ -61,7 +63,12 @@ li { margin-bottom: 2px; }
 
 #comments { padding: 0; margin-top: 15px; }
 #comments ul { margin: 10px 0 0 0; list-style-type: none; }
-#comments li { padding: 4px; border: 1px solid #797979; margin-bottom: 8px; }
+#comments li {
+  padding: 4px;
+  background-color: #E5DC9C;
+  margin-bottom: 8px;
+}
+#comments p { margin-bottom: 1px; }
 
 #index_search { margin: 80px auto 80px auto; }
 
