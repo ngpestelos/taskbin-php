@@ -3,6 +3,7 @@ $def with (tags)
 $var title = "tags"
 
 <div id="tags" class="prepend-1 span-23">
+  <h3>Tags ($len(tags))</h3>
   <ul>
     $for id, name in tags:
       <li><a href="/t/tag/$id">$name</a></li>
