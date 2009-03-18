@@ -28,6 +28,15 @@ $ type = task['type']
         <li><a href="/t/move/$id?trash">Trash</a></li>
     </ul>
   </div>
+  <div id="cform">
+    <form action="/t/comment" method="post">
+      <p>Say something:</p>
+      <input type="text" size="64" maxlength="64" name="comment"
+        id="comment" />
+      <input id="post" type="submit" value="Post" />
+      <input type="hidden" name="task" value="$id" />
+    </form>
+  </div>
   $if comments:
     <div id="comments">
       <h4 class="comment_header">Comments</h4>

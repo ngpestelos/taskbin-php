@@ -58,15 +58,15 @@ li { margin-bottom: 2px; }
 
 #tform { margin-top: 20px; }
 
-#cform { margin-top: 15px; }
-#cform input#post { margin-left: 10px; }
+#cform { margin-top: 12px; padding: 8px; background-color: #F4EFB7; }
+#cform p { font-weight: bold; margin-bottom: 1px; }
 
 #comments { padding: 0; margin-top: 15px; }
 #comments ul { margin: 10px 0 0 0; list-style-type: none; }
 #comments li {
   padding: 4px;
-  background-color: #E5DC9C;
   margin-bottom: 8px;
+  border-bottom: 1px solid #797979; 
 }
 #comments p { margin-bottom: 1px; }
 
