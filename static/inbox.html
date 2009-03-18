@@ -8,12 +8,7 @@ $else:
   $ numtasks = 0
 
 <div id="content" class="prepend-1 span-23">
-  $if numtasks > 1:
-    <h4>$numtasks tasks</h4>
-  $elif numtasks == 1:
-    <h4>$numtasks task</h4>
-  $else:
-    <h4>No tasks</h4>
+  <h3>Inbox ($numtasks)</h3>
   <ul>
     $for task in tasks:
       $ id = task['_id']
