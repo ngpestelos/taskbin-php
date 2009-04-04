@@ -46,6 +46,10 @@ class Tags:
         return "tags"
 
 class Stuff:
+    def POST(self):
+        input = web.input()
+        task.post(input.task, input.tags)
+        raise web.seeother('/t')
     def GET(self):
         return render.stuff()
 
