@@ -3,17 +3,6 @@ body {
   font-family: 'Verdana', sans-serif; 
 }
 
-li { margin-bottom: 2px; }
-
-#newstuff { border: 1px solid #797979; padding-left: 12px; padding-top: 12px; }
-#newstuff label {
-  display: block;
-  margin-bottom: 5px;
-  color: #32381E;
-}
-
-#header #search { padding-top: 5px; margin-top: 6px; }
-
 #nav1 { border-bottom: 1px solid #797979; }
 #nav1 a {
   font-weight: bold; 
@@ -21,63 +10,14 @@ li { margin-bottom: 2px; }
   text-decoration: none;
 }
 
-#footer { border-top: 1px solid #797979; margin-top: 60px; }
-
-#content { margin-top: 20px; }
-
-#alltags { border: 1px solid #797979; margin-top: 20px; }
-
-#alltags h3 { padding-top: 4px; text-align: center; color: #32381E; }
-
-#alltags ul { padding-bottom: 10px; list-style-type: none; }
-
-#alltags li { margin-left: -8px; }
-
-.posted { font-size: 10px; font-style: italic; }
-
-#taskbox { padding: 8px; border: 1px solid black; }
-#taskbox h4 { margin-bottom: 1px; }
-#taskbox p { margin-bottom: 1px; }
-#taskbox .options { text-align: right; }
-#taskbox .move { font-weight: bold; margin-right: 12px; }
-#taskbox ul {
-  list-style-type: none;
-  margin: 12px 2px 1px 0;
-  padding: 0;
-  font-size: 11.5px;
-}
-#taskbox li { display: inline; margin-right: 8px; }
-
-/* box backgrounds */
-.trash { background-color: #E9C2BE; }
-.next { background-color: #C9EDCC; }
-.in { background-color: #E2F2C6; }
-.someday { background-color: #C2CFF1; }
-
-.comment_header { font-weight: bold; margin-top: 16px; }
-
-#tform { margin-top: 20px; }
-
-#cform { margin-top: 12px; padding: 8px; background-color: #F4EFB7; }
-#cform p { font-weight: bold; margin-bottom: 1px; }
-
-#comments { padding: 0; margin-top: 15px; }
-#comments ul { margin: 10px 0 0 0; list-style-type: none; }
-#comments li {
-  padding: 4px;
-  margin-bottom: 8px;
-  border-bottom: 1px solid #797979; 
-}
-#comments p { margin-bottom: 1px; }
-
-#index_search { margin: 80px auto 80px auto; }
-
-.tform { margin-top: 80px; margin-bottom: 80px; }
-
-#tags { margin-top: 39px; }
-#tags h4 { padding-bottom: 2px; border-bottom: 1px solid #797979; }
-
-#stuff label { display: block; }
-
 #site_id { margin-top: 5px; }
 #site_id h3 { color: #797979; }
+
+#index-search { margin-top: 40px; }
+
+#stuff { margin-top: 20px; }
+#stuff label { display: block; }
+
+#footer { margin-top: 20px; border-top: 1px solid #797979 }
+
+#multitag { font-weight: normal; font-size: 12px; }

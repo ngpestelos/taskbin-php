@@ -17,7 +17,7 @@ urls = (
 
 app = web.application(urls, globals(), autoreload=True)
 
-#render = web.template.render('static/', base='site')
+render = web.template.render('html', base='site')
 render_bare = web.template.render('html')
 
 class Trash:
@@ -47,7 +47,7 @@ class Tags:
 
 class Stuff:
     def GET(self):
-        return "stuff"
+        return render.stuff()
 
 class Index:
     def GET(self):
