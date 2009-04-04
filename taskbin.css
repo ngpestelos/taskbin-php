@@ -79,4 +79,5 @@ li { margin-bottom: 2px; }
 
 #stuff label { display: block; }
 
-#site_id h2 { color: #797979; }
+#site_id { margin-top: 5px; }
+#site_id h3 { color: #797979; }
