@@ -34,7 +34,7 @@ class Next:
 
 class Inbox:
     def GET(self):
-        return "inbox"
+        return render.inbox(task.inbox())
 
 class Search:
     def POST(self):

@@ -4,6 +4,10 @@ import tag
 
 db = Server()['taskbin']
 
+def inbox():
+    fun = '''function(doc) { if (doc.type == 'in') emit (doc.posted, doc) }'''
+    return [r.value for r in db.query(fun)]
+
 def post(task, tags):
     task = {'type' : 'in', 'task' : task, 'posted' : datetime.today().ctime()}
     taskId = db.create(task)

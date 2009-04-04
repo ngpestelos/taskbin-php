@@ -7,11 +7,11 @@ $if tasks:
 $else:
   $ numtasks = 0
 
-<div id="content" class="prepend-1 span-23">
+<div id="inbox" class="prepend-1 span-23">
   <h3>Inbox ($numtasks)</h3>
   <ul>
     $for task in tasks:
       $ id = task['_id']
-      <li><a href="/t/task/$id">$task['name']</a></li>
+      <li><a href="/t/task/$id">$task['task']</a></li>
   </ul>
 </div>

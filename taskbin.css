@@ -15,9 +15,10 @@ body {
 
 #index-search { margin-top: 40px; }
 
-#stuff { margin-top: 20px; }
 #stuff label { display: block; }
 
 #footer { margin-top: 20px; border-top: 1px solid #797979 }
 
 #multitag { font-weight: normal; font-size: 12px; }
+
+#inbox, #stuff { margin-top: 20px; }
