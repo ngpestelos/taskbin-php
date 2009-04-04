@@ -15,3 +15,6 @@ def post(task, tags):
         tag = {'type' : 'tag', 'name' : t.strip(), \
                'posted' : datetime.today().ctime(), 'task' : taskId}
         db.create(tag)
+
+def get(id):
+    return db[id]

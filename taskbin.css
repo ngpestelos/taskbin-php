@@ -21,4 +21,7 @@ body {
 
 #multitag { font-weight: normal; font-size: 12px; }
 
-#inbox, #stuff { margin-top: 20px; }
+#inbox, #stuff, #task-details { margin-top: 20px; }
+
+#task-details h5 { margin-bottom: 3px; }
+#taskbox { border: 1px solid #22222B; padding: 4px; }

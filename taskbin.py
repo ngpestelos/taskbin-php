@@ -5,6 +5,7 @@ import task, tag
 #import searchengine
 
 urls = (
+  '/t/task/(.*)', 'Detail',
   '/t/trash', 'Trash',
   '/t/someday', 'Someday',
   '/t/next', 'Next',
@@ -19,6 +20,16 @@ app = web.application(urls, globals(), autoreload=True)
 
 render = web.template.render('html', base='site')
 render_bare = web.template.render('html')
+
+class Detail:
+    def GET(self, taskId):
+        doc = task.get(taskId)
+        name = doc['task']
+        id = doc['_id']
+        type = doc['type']
+        posted = doc['posted']
+        tags = []
+        return render.task_detail(name, id, type, posted, tags)
 
 class Trash:
     def GET(self):
