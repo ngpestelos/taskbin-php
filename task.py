@@ -4,6 +4,10 @@ import tag
 
 db = Server()['taskbin']
 
+def trash():
+    fun = "function(doc) { if (doc.type == 'trash') emit (doc.posted, doc) }"
+    return [r.value for r in db.query(fun)]
+
 def someday():
     fun = "function(doc) { if (doc.type == 'someday') emit (doc.posted, doc) }"
     return [r.value for r in db.query(fun)]
