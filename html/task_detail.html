@@ -9,11 +9,11 @@ $var title = "Task Details"
     <ul class="options">
       <li class="move">Move:</li>
       $if type != 'next':
-        <li><a href="/t/move/$id?next">Next</a></li>
+        <li><a href="/t/move/$id?t=next&f=$type">Next</a></li>
       $if type != 'someday':
-        <li><a href="/t/move/$id?someday">Someday</a></li>
+        <li><a href="/t/move/$id?t=someday&f=$type">Someday</a></li>
       $if type != 'trash':
-        <li><a href="/t/move/$id?trash">Trash</a></li>
+        <li><a href="/t/move/$id?t=trash&f=$type">Trash</a></li>
     </ul>
   </div>
 </div>

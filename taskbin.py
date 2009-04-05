@@ -33,13 +33,13 @@ def when_posted(posted):
 class Move:
     def GET(self, id):
         input = web.input()
-        if 'trash' in input:
+        if 'trash' in input.t:
             task.move(id, 'trash')
-        elif 'someday' in input:
+        elif 'someday' in input.t:
             task.move(id, 'someday')
-        elif 'next' in input:
+        elif 'next' in input.t:
             task.move(id, 'next')
-        raise web.seeother('/t')
+        raise web.seeother('/t/%s' % input.f)
 
 class Detail:
     def GET(self, taskId):
