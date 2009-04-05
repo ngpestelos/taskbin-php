@@ -3,8 +3,17 @@ $def with (task, id, type, posted, tags)
 $var title = "Task Details"
 
 <div id="task-details" class="prepend-1 span-15">
-  <div id="taskbox">
+  <div id="taskbox" class="$type">
     <h5>$task</h5>
     <p class="posted">$posted</p>
+    <ul class="options">
+      <li class="move">Move:</li>
+      $if type != 'next':
+        <li><a href="/t/move/$id?next">Next</a></li>
+      $if type != 'someday':
+        <li><a href="/t/move/$id?someday">Someday</a></li>
+      $if type != 'trash':
+        <li><a href="/t/move/$id?trash">Trash</a></li>
+    </ul>
   </div>
 </div>
