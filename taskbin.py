@@ -45,7 +45,7 @@ class Trash:
 
 class Someday:
     def GET(self):
-        return "someday"
+        return render.someday(task.someday())
 
 class Next:
     def GET(self):
