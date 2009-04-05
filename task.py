@@ -4,6 +4,12 @@ import tag
 
 db = Server()['taskbin']
 
+def move(id, newtype):
+    task = db[id]
+    task['type'] = newtype
+    task['updated'] = datetime.today().ctime()
+    db[id] = task
+
 def trash():
     fun = "function(doc) { if (doc.type == 'trash') emit (doc.posted, doc) }"
     return [r.value for r in db.query(fun)]

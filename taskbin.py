@@ -8,6 +8,7 @@ import web.utils
 #import searchengine
 
 urls = (
+  '/t/move/(.*)', 'Move',
   '/t/task/(.*)', 'Detail',
   '/t/trash', 'Trash',
   '/t/someday', 'Someday',
@@ -28,6 +29,17 @@ def when_posted(posted):
     parsed = time.strptime(posted, '%a %b %d %H:%M:%S %Y')
     dt = datetime.fromtimestamp(time.mktime(parsed))
     return web.utils.datestr(dt, datetime.today())
+
+class Move:
+    def GET(self, id):
+        input = web.input()
+        if 'trash' in input:
+            task.move(id, 'trash')
+        elif 'someday' in input:
+            task.move(id, 'someday')
+        elif 'next' in input:
+            task.move(id, 'next')
+        raise web.seeother('/t')
 
 class Detail:
     def GET(self, taskId):
