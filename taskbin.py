@@ -2,6 +2,9 @@
 
 import web
 import task, tag
+from datetime import datetime
+import time
+import web.utils
 #import searchengine
 
 urls = (
@@ -21,13 +24,18 @@ app = web.application(urls, globals(), autoreload=True)
 render = web.template.render('html', base='site')
 render_bare = web.template.render('html')
 
+def when_posted(posted):
+    parsed = time.strptime(posted, '%a %b %d %H:%M:%S %Y')
+    dt = datetime.fromtimestamp(time.mktime(parsed))
+    return web.utils.datestr(dt, datetime.today())
+
 class Detail:
     def GET(self, taskId):
         doc = task.get(taskId)
         name = doc['task']
         id = doc['_id']
         type = doc['type']
-        posted = doc['posted']
+        posted = when_posted(doc['posted'])
         tags = []
         return render.task_detail(name, id, type, posted, tags)
 

@@ -25,3 +25,4 @@ body {
 
 #task-details h5 { margin-bottom: 3px; }
 #taskbox { border: 1px solid #22222B; padding: 4px; }
+#taskbox p { font-size: 10.5px; color: #797979; }
