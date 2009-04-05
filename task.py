@@ -4,6 +4,10 @@ import tag
 
 db = Server()['taskbin']
 
+def next():
+    fun = "function(doc) { if (doc.type == 'next') emit (doc.posted, doc) }"
+    return [r.value for r in db.query(fun)]
+
 def inbox():
     fun = '''function(doc) { if (doc.type == 'in') emit (doc.posted, doc) }'''
     return [r.value for r in db.query(fun)]

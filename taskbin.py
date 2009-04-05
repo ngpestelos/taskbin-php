@@ -49,7 +49,7 @@ class Someday:
 
 class Next:
     def GET(self):
-        return "next"
+        return render.next(task.next())
 
 class Inbox:
     def GET(self):
