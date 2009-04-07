@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import web
-import task, tag
+import task
 from datetime import datetime
 import time
 import web.utils
