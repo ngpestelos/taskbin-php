@@ -10,20 +10,19 @@ def move(id, newtype):
     db[id] = task
 
 def trash():
-    fun = "function(doc) { if (doc.type == 'trash') emit (doc.posted, doc) }"
-    return [r.value for r in db.query(fun)]
+    return _view('trash')
 
 def someday():
-    fun = "function(doc) { if (doc.type == 'someday') emit (doc.posted, doc) }"
-    return [r.value for r in db.query(fun)]
+    return _view('someday')
 
 def next():
-    fun = "function(doc) { if (doc.type == 'next') emit (doc.posted, doc) }"
-    return [r.value for r in db.query(fun)]
+    return _view('next')
 
 def inbox():
-    fun = '''function(doc) { if (doc.type == 'inbox') emit (doc.posted, doc) }'''
-    return [r.value for r in db.query(fun)]
+    return _view('inbox')
+
+def _view(type):
+    return [r.value for r in db.view('_design/taskbin/_view/%s' % type, descending=True)]
 
 def post(task, tags):
     task = {'type' : 'inbox', 'task' : task, \
