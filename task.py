@@ -1,6 +1,5 @@
 from couchdb import Server
 from datetime import datetime
-import tag
 
 db = Server()['taskbin']
 
