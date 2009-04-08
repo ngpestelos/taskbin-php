@@ -1,11 +1,9 @@
 #!/usr/bin/env python
 
-import web
+import web, web.utils
 import task
 from datetime import datetime
 import time
-import web.utils
-#import searchengine
 
 urls = (
   '/t/move/(.*)', 'Move',
@@ -89,4 +87,5 @@ class Index:
         return render_bare.index()
 
 if __name__ == '__main__':
+    design.load()
     app.run()
