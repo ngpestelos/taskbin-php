@@ -20,8 +20,7 @@ urls = (
 
 app = web.application(urls, globals(), autoreload=True)
 
-render = web.template.render('html', base='site')
-render_bare = web.template.render('html')
+render = web.template.render('static', base='site')
 
 def when_posted(posted):
     parsed = time.strptime(posted, '%a %b %d %H:%M:%S %Y')
@@ -85,7 +84,7 @@ class Stuff:
 
 class Index:
     def GET(self):
-        return render_bare.index()
+        return render.index()
 
 if __name__ == '__main__':
     design.load()
