@@ -21,8 +21,13 @@ def next():
 def inbox():
     return _view('inbox')
 
+def detail(taskId):
+    return [r.value for r in db.view('_design/taskbin/_view/detail', \
+      startkey=[taskId, 0], endkey=[taskId, 1])]
+
 def _view(type):
-    return [r.value for r in db.view('_design/taskbin/_view/%s' % type, descending=True)]
+    return [r.value for r in db.view('_design/taskbin/_view/%s' % type, \
+      descending=True)]
 
 def post(task, tags):
     task = {'type' : 'inbox', 'task' : task, \
