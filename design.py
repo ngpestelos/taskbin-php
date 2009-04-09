@@ -33,11 +33,8 @@ doc = {
     'tags'    : {
       'map' : '''function(doc) {
                    if (doc.type == 'tag')
-                     emit(doc.name, [doc._id, doc.task]);
-                 }''',
-      'reduce' : '''function(key, values) {
-                      return values;
-                    }'''
+                     emit(doc.name, [doc._id, doc]);
+                 }'''
     }
   }
 }
