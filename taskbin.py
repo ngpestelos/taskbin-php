@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import web, web.utils
-import task
+import task, design, tag
 from datetime import datetime
 import time
 
@@ -41,7 +41,8 @@ class Move:
 
 class Detail:
     def GET(self, taskId):
-        doc = task.get(taskId)
+        detail = task.detail(taskId)
+        doc = detail[0]
         name = doc['task']
         id = doc['_id']
         type = doc['type']
