@@ -1,27 +1,33 @@
 from couchdb import Server
 import simplejson as json
 
+def _tasks(type):
+    fun = '''
+    function(doc) {
+      if (doc.type == '%s') {
+        if (doc.updated)
+          emit (Date.parse(doc.updated), doc);
+        else
+          emit (Date.parse(doc.posted), doc);
+      }
+    }''' % type
+    return fun
+
 doc = {
   'language' : 'javascript',
   'views' : {
-    'inbox' : {
+    'inbox'   : { 'map' : _tasks('inbox') },
+    'next'    : { 'map' : _tasks('next')  },
+    'someday' : { 'map' : _tasks('someday') },
+    'trash'   : { 'map' : _tasks('trash') },
+    'detail' : {
       'map' : '''function(doc) {
-                   if (doc.type == 'inbox') emit(doc.posted, doc);
-                 }'''
-    },
-    'next'  : {
-      'map' : '''function(doc) {
-                   if (doc.type == 'next') emit(doc.posted, doc);
-                 }'''
-    },
-    'someday' : {
-      'map' : '''function(doc) {
-                   if (doc.type == 'someday') emit(doc.posted, doc);
-                 }'''
-    },
-    'trash' : {
-      'map' : '''function(doc) {
-                   if (doc.type == 'trash') emit(doc.posted, doc);
+                   if (doc.type != 'tag') {
+                      emit([doc._id, 0], doc);
+                   }
+                   else if (doc.type == 'tag') {
+                      emit([doc.task, 1], doc);
+                   }
                  }'''
     }
   }
