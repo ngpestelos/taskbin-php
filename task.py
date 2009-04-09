@@ -1,5 +1,6 @@
 from couchdb import Server
 from datetime import datetime
+from sets import Set
 
 db = Server()['taskbin']
 
@@ -38,5 +39,14 @@ def post(task, tags):
                'posted' : datetime.today().ctime(), 'task' : taskId}
         db.create(tag)
 
+def all_tags():
+    tags = {}
+    res = [(r.key, r.value) for r in db.view('_design/taskbin/_view/tags')]
+    for tag, task in res:
+        tags.setdefault(tag, []).append(task)
+    keys = Set([r[0] for r in res])
+    keys.sort()
+    return keys, tags 
+    
 def get(id):
     return db[id]

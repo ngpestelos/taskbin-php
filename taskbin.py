@@ -72,7 +72,8 @@ class Search:
 
 class Tags:
     def GET(self):
-        return "tags"
+        tags, tasks = task.all_tags()
+        return render.tags(tags, tasks)
 
 class Stuff:
     def POST(self):

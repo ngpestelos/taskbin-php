@@ -1,0 +1,16 @@
+$def with (tags, tasks)
+
+$var title = "Tags"
+
+$if tags:
+  $ numtags = len(tags)
+$else:
+  $ numtags = 0
+
+<div id="tags" class="prepend-1 span-23">
+  <h3>Tags</h3>
+  <ul>
+    $for t in tags:
+      <li><a href="#">$t</a></li>
+  </ul>
+</div>
