@@ -40,13 +40,8 @@ def post(task, tags):
         db.create(tag)
 
 def all_tags():
-    tags = {}
-    res = [(r.key, r.value) for r in db.view('_design/taskbin/_view/tags')]
-    for tag, task in res:
-        tags.setdefault(tag, []).append(task)
-    keys = Set([r[0] for r in res])
-    keys.sort()
-    return keys, tags 
-    
+    return [r.value for r in db.view('_design/taskbin/_view/tags')]
+   
+ 
 def get(id):
     return db[id]
