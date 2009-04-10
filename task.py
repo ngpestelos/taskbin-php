@@ -1,6 +1,7 @@
 from couchdb import Server
 from datetime import datetime
 from sets import Set
+import urllib
 
 db = Server()['taskbin']
 
@@ -49,6 +50,11 @@ def all_tags():
     keys.sort()
     values = [tags[k] for k in keys]
     return keys, values
- 
+
+def all_tasks(hash):
+    q = dict(key=hash)
+    ehash = urllib.urlencode(q)
+    res = [r for r in db.view('_design/taskbin/_view/by_hash', key=ehash[4:])]
+
 def get(id):
     return db[id]

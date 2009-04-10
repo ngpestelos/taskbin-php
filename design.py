@@ -38,8 +38,8 @@ doc = {
     },
     'by_hash' : {
       'map' : '''function(doc) {
-                   if (doc.type == 'tag')
-                     emit(doc.hash, doc);
+                  if (doc.type == 'tag')
+                    emit(doc.hash, doc);
                  }'''
     }
   }
