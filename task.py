@@ -54,7 +54,14 @@ def all_tags():
 def all_tasks(hash):
     q = dict(key=hash)
     ehash = urllib.urlencode(q)
-    res = [r for r in db.view('_design/taskbin/_view/by_hash', key=ehash[4:])]
+    res = [r.value['task'] for r in db.view('_design/taskbin/_view/by_hash', key=ehash[4:])]
+    return [db[id] for id in res]
+
+def get_tag(hash):
+    q = dict(key=hash)
+    ehash = urllib.urlencode(q)
+    tags = [r.value for r in db.view('_design/taskbin/_view/by_hash', key=ehash[4:])]
+    return tags[0]
 
 def get(id):
     return db[id]

@@ -30,7 +30,9 @@ def when_posted(posted):
 
 class TaggedTasks:
     def GET(self, hash):
-        return "tasks tagged as 'foo'"
+        tag = task.get_tag(hash)
+        tasks = task.all_tasks(hash)
+        return render.tagged_tasks(tag, tasks)
 
 class Move:
     def GET(self, id):
