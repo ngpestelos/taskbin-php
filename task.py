@@ -37,7 +37,8 @@ def post(task, tags):
       'posted' : datetime.today().ctime()}
     taskId = db.create(task)
     for t in tags.split(','):
-        tag = {'type' : 'tag', 'name' : t.strip(), \
+        name = t.strip()
+        tag = {'type' : 'tag', 'name' : name, \
                'posted' : datetime.today().ctime(), 'task' : taskId, \
                'hash' : utils.hash(name)}
         db.create(tag)
