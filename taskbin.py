@@ -6,6 +6,7 @@ from datetime import datetime
 import time
 
 urls = (
+  '/t/tag/(.*)', 'TaggedTasks',
   '/t/move/(.*)', 'Move',
   '/t/task/(.*)', 'Detail',
   '/t/trash', 'Trash',
@@ -26,6 +27,10 @@ def when_posted(posted):
     parsed = time.strptime(posted, '%a %b %d %H:%M:%S %Y')
     dt = datetime.fromtimestamp(time.mktime(parsed))
     return web.utils.datestr(dt, datetime.today())
+
+class TaggedTasks:
+    def GET(self, hash):
+        return "tasks tagged as 'foo'"
 
 class Move:
     def GET(self, id):
@@ -73,7 +78,8 @@ class Search:
 class Tags:
     def GET(self):
         tags, hashes = task.all_tags()
-        return render.tags(tags, hashes)
+        merged = zip(tags, hashes)
+        return render.tags(merged)
 
 class Stuff:
     def POST(self):
