@@ -1,6 +1,7 @@
 from couchdb import Server
 from datetime import datetime
 from sets import Set
+import utils
 import urllib
 
 db = Server()['taskbin']
@@ -37,7 +38,8 @@ def post(task, tags):
     taskId = db.create(task)
     for t in tags.split(','):
         tag = {'type' : 'tag', 'name' : t.strip(), \
-               'posted' : datetime.today().ctime(), 'task' : taskId}
+               'posted' : datetime.today().ctime(), 'task' : taskId, \
+               'hash' : utils.hash(name)}
         db.create(tag)
 
 def all_tags():
