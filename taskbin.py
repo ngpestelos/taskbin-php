@@ -53,7 +53,7 @@ class Detail:
         id = doc['_id']
         type = doc['type']
         posted = when_posted(doc['posted'])
-        tags = []
+        tags = detail[1:] 
         return render.task_detail(name, id, type, posted, tags)
 
 class Trash:

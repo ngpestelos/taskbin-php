@@ -2,7 +2,7 @@ $def with (task, id, type, posted, tags)
 
 $var title = "Task Details"
 
-<div id="task-details" class="prepend-1 span-15">
+<div id="task-details" class="prepend-1 span-16">
   <div id="taskbox" class="$type">
     <h5>$task</h5>
     <p class="posted">$posted</p>
@@ -16,4 +16,13 @@ $var title = "Task Details"
         <li><a href="/t/move/$id?t=trash&f=$type">Trash</a></li>
     </ul>
   </div>
+</div>
+<div id="tagged-as" class="prepend-1 span-4">
+  <h4>Tags</h4>
+  <ul>
+    $for t in tags:
+      $ hash = t['hash']
+      $ name = t['name']
+      <li><a href="/t/tag/$hash">$name</li>
+  </ul>
 </div>

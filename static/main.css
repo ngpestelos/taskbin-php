@@ -21,7 +21,7 @@ body {
 
 #multitag { font-weight: normal; font-size: 12px; }
 
-#inbox, #stuff, #task-details, #next, #someday, #trash, #tags, #tagged-tasks {
+#inbox, #stuff, #task-details, #next, #someday, #trash, #tags, #tagged-tasks, #tagged-as {
   margin-top: 20px;
 }
 
