@@ -3,12 +3,10 @@ $def with (tag, tasks)
 $var title = "Tagged Tasks"
 
 $ name = tag['name']
-<div id="tagged-tasks" class="prepend-1 span-23">
-  <h3>Tagged as '$name'</h3>
-  <ul>
+<div id="bin" class="prepend-2 span-14">
+  <h3>Tagged as '$name' ($len(tasks))</h3>
+  <ol>
     $for doc in tasks:
-      $ id = doc['_id']
-      $ task = doc['task']
-      <li><a href="/t/task/$id">$task</a></li>
-  </ul>
+      <li><a href="/t/task/$doc['_id']">$doc['task']</a></li>
+  </ol>
 </div>
