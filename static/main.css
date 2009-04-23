@@ -16,11 +16,13 @@ body {
 #nav2 li { list-style-type: none; margin-left: -2px; margin-bottom: 4px; }
 #nav2 a { font-size: 14px; text-decoration: none; }
 
+#stuff { margin-top: 40px; margin-bottom: 40px; }
 #stuff label { display: block; }
+#stuff input { margin-top: 2px; }
 
 #footer { margin-top: 20px; border-top: 1px solid #797979 }
 
-#multitag { font-weight: normal; font-size: 12px; }
+#multitag { font-weight: normal; font-size: 12px; margin: 0; }
 
 #inbox, #stuff, #task-details, #next, #someday, #trash, #tags, #tagged-tasks, #tagged-as {
   margin-top: 20px;
