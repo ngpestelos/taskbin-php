@@ -24,9 +24,8 @@ body {
 
 #multitag { font-weight: normal; font-size: 12px; margin: 0; }
 
-#inbox, #stuff, #task-details, #next, #someday, #trash, #tags, #tagged-tasks, #tagged-as {
-  margin-top: 20px;
-}
+#bin { margin-top: 40px; margin-bottom: 60px; }
+#bin li { font-size: 14px; margin-bottom: 16px; }
 
 #task-details h5 { margin-bottom: 3px; }
 #taskbox { border: 1px solid #22222B; padding: 4px; }
