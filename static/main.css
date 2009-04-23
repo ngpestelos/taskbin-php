@@ -3,17 +3,18 @@ body {
   font-family: 'Verdana', sans-serif; 
 }
 
-#nav1 { border-bottom: 1px solid #797979; }
-#nav1 a {
-  font-weight: bold; 
-  margin-right: 8px;
-  text-decoration: none;
-}
+#nav1 { border-bottom: 1px solid #797979; padding-bottom: 5px; }
+#nav1 a { margin-right: 8px; text-decoration: none; }
 
 #site_id { margin-top: 5px; }
 #site_id h3 { color: #797979; }
 
-#index-search { margin-top: 40px; }
+#index-search { margin-top: 40px; margin-bottom: 10px; }
+#index-search input#q { margin-right: 5px; }
+
+#nav2 ul { margin-left: 0px; }
+#nav2 li { list-style-type: none; margin-left: -2px; margin-bottom: 4px; }
+#nav2 a { font-size: 14px; text-decoration: none; }
 
 #stuff label { display: block; }
 
