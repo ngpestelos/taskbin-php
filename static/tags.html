@@ -7,8 +7,8 @@ $if tags:
 $else:
   $ numtags = 0
 
-<div id="tags" class="prepend-1 span-23">
-  <h3>Tags</h3>
+<div id="bin" class="prepend-2 span-14">
+  <h3>Tags ($numtags)</h3>
   <ul>
     $for tag, hash in tags:
       <li><a href="/t/tag/$hash">$tag</a></li>

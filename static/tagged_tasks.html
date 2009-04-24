@@ -7,6 +7,7 @@ $ name = tag['name']
   <h3>Tagged as '$name' ($len(tasks))</h3>
   <ol>
     $for doc in tasks:
-      <li><a href="/t/task/$doc['_id']">$doc['task']</a></li>
+      $ type = doc['type']
+      <li class="$type"><a href="/t/task/$doc['_id']">$doc['task']</a></li>
   </ol>
 </div>

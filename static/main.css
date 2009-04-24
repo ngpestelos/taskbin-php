@@ -49,7 +49,7 @@ body {
 #taskbox li { display: inline; margin-right: 8px; }
 
 /* box backgrounds */
-.in { background-color: #FFEC44; }
+.inbox { background-color: #FFEC44; }
 .next { background-color: #8AD580; }
 .trash { background-color: #A9AB91; }
 .someday { background-color: #C2CFF1; }
