@@ -36,7 +36,7 @@ body {
 }
 
 #taskbox span { font-size: 16px; color: #101010; }
-#taskbox { border: 1px solid #22222B; padding: 10px; }
+#taskbox { border: 1px solid #99B2BE; padding: 10px; }
 #taskbox p { font-size: 10.5px; color: #797979; }
 #taskbox .options { text-align: right; }
 #taskbox .move { font-weight: bold; margin-right: 12px; }
@@ -49,7 +49,7 @@ body {
 #taskbox li { display: inline; margin-right: 8px; }
 
 /* box backgrounds */
-.in { background-color: #E2F2C6; }
+.in { background-color: #FFEC44; }
 .next { background-color: #8AD580; }
-.trash { background-color: #E7C4C0; }
+.trash { background-color: #A9AB91; }
 .someday { background-color: #C2CFF1; }
