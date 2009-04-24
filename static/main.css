@@ -1,31 +1,39 @@
 body {
   font-size: 12.5px;
-  font-family: 'Verdana', sans-serif; 
+  font-family: 'Verdana', sans-serif;
+  background-color: #F6F4EA;
 }
 
-#nav1 { border-bottom: 1px solid #797979; padding-bottom: 5px; }
+#nav1 { border-bottom: 1px solid #101010; padding-bottom: 5px; }
 #nav1 a { margin-right: 8px; text-decoration: none; }
 
 #site_id { margin-top: 5px; }
-#site_id h3 { color: #797979; }
+#site_id h3 { color: #101010; }
 
 #index-search { margin-top: 40px; margin-bottom: 10px; }
 #index-search input#q { margin-right: 5px; }
 
 #nav2 ul { margin-left: 0px; }
-#nav2 li { list-style-type: none; margin-left: -2px; margin-bottom: 4px; }
+#nav2 li { list-style-type: none; margin-left: -1px; margin-bottom: 4px; }
 #nav2 a { font-size: 14px; text-decoration: none; }
 
 #stuff { margin-top: 40px; margin-bottom: 40px; }
 #stuff label { display: block; }
 #stuff input { margin-top: 2px; }
 
-#footer { margin-top: 20px; border-top: 1px solid #797979 }
+#footer { margin-top: 20px; border-top: 1px solid #101010; }
 
 #multitag { font-weight: normal; font-size: 12px; margin: 0; }
 
 #bin, #task-details, #tagged-as { margin-top: 40px; margin-bottom: 60px; }
-#bin li { font-size: 14px; margin-bottom: 16px; }
+#bin li {
+  list-style-type: none;
+  font-size: 14px;
+  margin-left: -12px;
+  margin-bottom: 16px;
+  border: 1px solid #99B2BE;
+  padding: 10px;
+}
 
 #task-details h5 { margin-bottom: 3px; }
 #taskbox { border: 1px solid #22222B; padding: 4px; }
