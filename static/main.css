@@ -35,8 +35,8 @@ body {
   padding: 10px;
 }
 
-#task-details h5 { margin-bottom: 3px; }
-#taskbox { border: 1px solid #22222B; padding: 4px; }
+#taskbox span { font-size: 16px; color: #101010; }
+#taskbox { border: 1px solid #22222B; padding: 10px; }
 #taskbox p { font-size: 10.5px; color: #797979; }
 #taskbox .options { text-align: right; }
 #taskbox .move { font-weight: bold; margin-right: 12px; }
@@ -44,7 +44,7 @@ body {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  font-size: 11px;
+  font-size: 14px;
 }
 #taskbox li { display: inline; margin-right: 8px; }
 
