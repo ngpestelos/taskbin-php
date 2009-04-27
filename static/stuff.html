@@ -1,10 +1,15 @@
-$var title = "new stuff"
+$var title = "New Stuff"
 
+<script type="text/javascript">
+  \$(document).ready(function() {
+    \$("input#task").focus();
+  });
+</script>
 <div id="stuff" class="prepend-7 span-17">
   <h3>New Stuff</h3>
   <form action="/t/new" method="post">
     <p>
-      <label for="task">Name</label>
+      <label for="task">Task</label>
       <input type="text" name="task" id="task" size="67" autocomplete="off" />
     </p>
     <p>
