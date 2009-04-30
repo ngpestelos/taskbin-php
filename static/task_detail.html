@@ -17,12 +17,9 @@ $var title = "Task Details"
     </ul>
   </div>
 </div>
-<div id="tagged-as" class="prepend-1 span-5">
-  <h4>Tags</h4>
+<div id="tagged-as" class="span-6">
   <ul>
     $for t in tags:
-      $ hash = t['hash']
-      $ name = t['name']
-      <li><a href="/t/tag/$hash">$name</li>
+      <li><span class="black"><a href="/t/tag/$t['hash']">$t['name']</a></span></li>
   </ul>
 </div>

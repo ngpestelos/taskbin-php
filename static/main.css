@@ -24,19 +24,30 @@ body {
 
 #multitag { font-weight: normal; font-size: 12px; margin: 0; }
 
-#bin, #task-details, #tagged-as { margin-top: 40px; margin-bottom: 60px; }
+#bin, #task-details { margin-top: 40px; margin-bottom: 60px; }
 #bin li {
   list-style-type: none;
   font-size: 14px;
   margin-left: -12px;
-  margin-bottom: 16px;
+  margin-bottom: 4px;
   border: 1px solid #99B2BE;
   padding: 10px;
 }
 
+#tagged-as { margin-top: 40px; margin-bottom: 60px; }
+#tagged-as ul { padding-top: 8px; }
+#tagged-as li { list-style-type: none; }
+#tagged-as a { text-decoration: none; color: white; }
+#tagged-as a:hover { color: yellow; }
+#tagged-as span.black {
+  padding: 8px; 
+  border: 1px solid black;
+  background-color: black;
+}
+
 #taskbox span { font-size: 16px; color: #101010; }
 #taskbox { border: 1px solid #99B2BE; padding: 10px; }
-#taskbox p { font-size: 10.5px; color: #797979; }
+#taskbox p { font-size: 10.5px; }
 #taskbox .options { text-align: right; }
 #taskbox .move { font-weight: bold; margin-right: 12px; }
 #taskbox ul {

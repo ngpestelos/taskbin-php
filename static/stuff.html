@@ -5,7 +5,7 @@ $var title = "New Stuff"
     \$("input#task").focus();
     \$("form").submit(function(event) {
       if(\$("input#task").val() == "") {
-        alert("Please specify the task.");
+        alert("Please specify a task.");
         event.preventDefault();
         \$("input#task").focus();
       }
