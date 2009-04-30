@@ -3,6 +3,13 @@ $var title = "New Stuff"
 <script type="text/javascript">
   \$(document).ready(function() {
     \$("input#task").focus();
+    \$("form").submit(function(event) {
+      if(\$("input#task").val() == "") {
+        alert("Please specify the task.");
+        event.preventDefault();
+        \$("input#task").focus();
+      }
+    });
   });
 </script>
 <div id="stuff" class="prepend-5 span-15">
