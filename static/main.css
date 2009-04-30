@@ -18,7 +18,7 @@ body {
 
 #stuff { margin-top: 40px; margin-bottom: 40px; }
 #stuff label { display: block; }
-#stuff input { margin-top: 2px; }
+#stuff input { margin-top: 2px; font-size: 16px; }
 
 #footer { margin-top: 20px; border-top: 1px solid #101010; }
 
