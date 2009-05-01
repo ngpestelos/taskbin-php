@@ -29,9 +29,8 @@ def when_posted(posted):
     return web.utils.datestr(dt, datetime.today())
 
 class TaggedTasks:
-    def GET(self, hash):
-        tag = task.get_tag(hash)
-        tasks = task.all_tasks(hash)
+    def GET(self, tagId):
+        tag, tasks = task.all_tasks(tagId)
         return render.tagged_tasks(tag, tasks)
 
 class Move:
@@ -77,11 +76,6 @@ class Search:
         input = web.input()
         return "search is disabled"
 
-#class Tags:
-#    def GET(self):
-#        tags, hashes = task.all_tags()
-#        merged = zip(tags, hashes)
-#        return render.tags(merged)
 class Tags:
     def GET(self):
         return render.tags(task.all_tags())

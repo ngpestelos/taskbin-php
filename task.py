@@ -49,17 +49,10 @@ def post(task, tags):
 def all_tags():
     return [r.value for r in db.view('_design/taskbin/_view/tags')]
     
-def all_tasks(hash):
-    q = dict(key=hash)
-    ehash = urllib.urlencode(q)
-    res = [r.value['task'] for r in db.view('_design/taskbin/_view/by_hash', key=ehash[4:])]
-    return [db[id] for id in res]
-
-def get_tag(hash):
-    q = dict(key=hash)
-    ehash = urllib.urlencode(q)
-    tags = [r.value for r in db.view('_design/taskbin/_view/by_hash', key=ehash[4:])]
-    return tags[0]
+def all_tasks(tagId):
+    tag = db[tagId]
+    tasks = [db[r.value] for r in db.view('_design/taskbin/_view/by_tag',key=tag['name'])]
+    return tag, tasks
 
 def get(id):
     return db[id]

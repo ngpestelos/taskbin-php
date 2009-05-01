@@ -36,11 +36,14 @@ doc = {
                      emit(doc.name, doc);
                  }'''
     },
-    'by_hash' : {
+    'by_tag'  : {
       'map' : '''function(doc) {
-                  if (doc.type == 'tag')
-                    emit(doc.hash, doc);
-                 }'''
+                   if (doc.type != 'tag' && doc.tags) {
+                     var i;
+                     for (i = 0; i < doc.tags.length; i += 1)
+                       emit(doc.tags[i], doc._id);
+                   }
+                 }''' 
     }
   }
 }
