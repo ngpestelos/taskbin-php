@@ -1,8 +1,6 @@
 from couchdb import Server
 from datetime import datetime
 from sets import Set
-import utils
-import urllib
 
 db = Server()['taskbin']
 
@@ -24,9 +22,6 @@ def next():
 def inbox():
     return _view('inbox')
 
-#def detail(taskId):
-#    return [r.value for r in db.view('_design/taskbin/_view/detail', \
-#      startkey=[taskId, 0], endkey=[taskId, 1])]
 def detail(taskId):
     task = db[taskId]
     tags = [get_tag(t) for t in task.get('tags', [])]
