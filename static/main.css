@@ -36,7 +36,7 @@ body {
 
 #tagged-as { margin-top: 40px; margin-bottom: 60px; }
 #tagged-as ul { padding-top: 8px; }
-#tagged-as li { list-style-type: none; }
+#tagged-as li { list-style-type: none; margin-bottom: 24px; }
 #tagged-as a { text-decoration: none; color: white; }
 #tagged-as a:hover { color: yellow; }
 #tagged-as span.black {
@@ -59,7 +59,8 @@ body {
 #taskbox li { display: inline; margin-right: 8px; }
 
 /* box backgrounds */
-.inbox { background-color: #FFEC44; }
+.tag { background-color: #DFD3B6; }
+.inbox { background-color: #FAEC7F; }
 .next { background-color: #8AD580; }
-.trash { background-color: #A9AB91; }
-.someday { background-color: #C2CFF1; }
+.trash { background-color: #9DB0AF; }
+.someday { background-color: #D3DCF2; }
