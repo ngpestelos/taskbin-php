@@ -23,13 +23,7 @@ def apply_hashes():
         db[id] = doc
 
 def delete_tags():
-    d = [dict(_id=r.value['_id'], _rev=r.value['_rev'], _deleted=True) for r in db.view('_design/taskbin/_view/tags')]
-    to_delete = dict(docs=d)
-    import simplejson as json
-    import httplib
-    headers = {'Content-type' : 'application/json', 'Accept' : 'text/plain'}
-    conn = httplib.HTTPConnection('localhost:5984')
-    conn.request("POST", "/taskbin/_bulk_docs", json.dumps(d), headers)
-    response = conn.getresponse()
-    print response.status, response.reason
-    conn.close()
+    tags = [r.value for r in db.view('_design/taskbin/_view/tags')]
+    for doc in tags:
+        doc['_deleted'] = True
+    db.update(tags) # this will complain about list indices must be integers
