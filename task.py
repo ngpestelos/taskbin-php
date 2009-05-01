@@ -23,7 +23,7 @@ def inbox():
     return _view('inbox')
 
 def detail(taskId):
-    task = db[taskId]
+    task = get_task(taskId)
     tags = [get_tag(t) for t in task.get('tags', [])]
     return task, tags
 
