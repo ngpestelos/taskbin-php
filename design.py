@@ -34,6 +34,13 @@ doc = {
                        emit(doc.tags[i], doc._id);
                    }
                  }''' 
+    },
+    'tasks'   : {
+      'map' : '''function(doc) {
+                   if (doc.type != 'tag') {
+                     emit(doc._id, doc);
+                   }
+                 }'''
     }
   }
 }

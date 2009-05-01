@@ -30,6 +30,8 @@ def delete_tags():
 
 def move_tags():
     tags = [r.value for r in db.view('_design/taskbin/_view/tags')]
-    for doc in tags:
-        task = db[doc['task']]
-        task.setdefault('tags', [])
+    for tag in tags:
+        t = task.get_task(tag['task'])
+        if t:
+            t.setdefault('tags', []).append(tag['name'])
+            db[tag['task']] = t

@@ -65,5 +65,9 @@ def all_tasks(tagId):
     tasks = [db[r.value] for r in db.view('_design/taskbin/_view/by_tag',key=tag['name'])]
     return tag, tasks
 
-def get(id):
-    return db[id]
+def get_task(taskId):
+    res = [r.value for r in db.view('_design/taskbin/_view/tasks', key=taskId)]
+    if res:
+        return res[0]
+    else:
+        return None
