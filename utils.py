@@ -28,6 +28,12 @@ def delete_tags():
         doc['_deleted'] = True
     db.update(tags) # this will complain about list indices must be integers
 
+def delete_tags_with_hashes():
+    tags = [r.value for r in db.view('_design/taskbin/_view/by_hash')]
+    for doc in tags:
+        doc['_deleted'] = True
+    db.update(tags)
+
 def move_tags():
     tags = [r.value for r in db.view('_design/taskbin/_view/tags')]
     for tag in tags:
@@ -35,3 +41,10 @@ def move_tags():
         if t:
             t.setdefault('tags', []).append(tag['name'])
             db[tag['task']] = t
+            task.make_tag(tag['name'])
+
+def rebuild_tags():
+    tasks = [r.value for r in db.view('_design/taskbin/_view/tasks')]
+    for t in tasks:
+        for tag in t.get('tags', []):
+            task.make_tag(tag)       

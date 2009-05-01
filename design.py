@@ -41,6 +41,13 @@ doc = {
                      emit(doc._id, doc);
                    }
                  }'''
+    },
+    'by_hash' : {
+      'map' : '''function(doc) {
+                   if (doc.type == 'tag' && doc.hasOwnProperty('hash')) {
+                     emit(doc.hash, doc);
+                   }
+                 }'''
     }
   }
 }
