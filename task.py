@@ -32,16 +32,19 @@ def _view(type):
     return [r.value for r in db.view('_design/taskbin/_view/%s' % type, \
       descending=True)]
 
+def make_tag(tag):
+    if [r for r in db.view('_design/taskbin/_view/tags', key=tag)]:
+        pass
+    else:
+        db.create({'type' : 'tag', 'name' : tag, 'posted': datetime.today().ctime()})
+
 def post(task, tags):
+    stripped_tags = [t.strip() for t in tags.split(',')]
     task = {'type' : 'inbox', 'task' : task, \
-      'posted' : datetime.today().ctime()}
-    taskId = db.create(task)
-    for t in tags.split(','):
-        name = t.strip()
-        tag = {'type' : 'tag', 'name' : name, \
-               'posted' : datetime.today().ctime(), 'task' : taskId, \
-               'hash' : utils.hash(name)}
-        db.create(tag)
+      'posted' : datetime.today().ctime(), 'tags' : stripped_tags}
+    db.create(task)
+    for tag in stripped_tags:
+        make_tag(tag)
 
 def all_tags():
     res = [r.value for r in db.view('_design/taskbin/_view/tags')]
