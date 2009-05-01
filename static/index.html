@@ -3,6 +3,12 @@ $var title = "Welcome"
 <script type="text/javascript">
   \$(document).ready(function() {
     \$("input#q").focus();
+    \$("form").submit(function(event) {
+      if(\$("input#q").val() == "") {
+        event.preventDefault();
+        \$("input#q").focus();
+      }
+    });
   });
 </script>
 <div id="index-search" class="prepend-7 span-17">
