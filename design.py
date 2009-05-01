@@ -41,6 +41,15 @@ doc = {
                      emit(doc._id, doc);
                    }
                  }'''
+    },
+    'words'   : {
+      'map' : '''function(doc) {
+                   if (doc.task) {
+                     var w = doc.task.split(/\W+/);
+                     for (var i = 0; i < w.length; i++)
+                       emit(w[i], doc);
+                   }
+                 }'''
     }
   }
 }
