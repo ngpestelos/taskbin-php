@@ -27,3 +27,9 @@ def delete_tags():
     for doc in tags:
         doc['_deleted'] = True
     db.update(tags) # this will complain about list indices must be integers
+
+def move_tags():
+    tags = [r.value for r in db.view('_design/taskbin/_view/tags')]
+    for doc in tags:
+        task = db[doc['task']]
+        task.setdefault('tags', [])
