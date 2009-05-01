@@ -77,11 +77,14 @@ class Search:
         input = web.input()
         return "search is disabled"
 
+#class Tags:
+#    def GET(self):
+#        tags, hashes = task.all_tags()
+#        merged = zip(tags, hashes)
+#        return render.tags(merged)
 class Tags:
     def GET(self):
-        tags, hashes = task.all_tags()
-        merged = zip(tags, hashes)
-        return render.tags(merged)
+        return render.tags(task.all_tags())
 
 class Stuff:
     def POST(self):

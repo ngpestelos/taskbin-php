@@ -33,7 +33,7 @@ doc = {
     'tags'    : {
       'map' : '''function(doc) {
                    if (doc.type == 'tag')
-                     emit(doc.name, null);
+                     emit(doc.name, doc);
                  }'''
     },
     'by_hash' : {

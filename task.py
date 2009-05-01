@@ -47,16 +47,8 @@ def post(task, tags):
         make_tag(tag)
 
 def all_tags():
-    res = [r.value for r in db.view('_design/taskbin/_view/tags')]
-    tags = {}
-    for doc in res:
-        if 'name' in doc and 'hash' in doc:
-            tags[doc['name']] = doc['hash']
-    keys = tags.keys()
-    keys.sort()
-    values = [tags[k] for k in keys]
-    return keys, values
-
+    return [r.value for r in db.view('_design/taskbin/_view/tags')]
+    
 def all_tasks(hash):
     q = dict(key=hash)
     ehash = urllib.urlencode(q)

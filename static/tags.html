@@ -10,7 +10,7 @@ $else:
 <div id="bin" class="prepend-2 span-14">
   <h3>Tags ($numtags)</h3>
   <ul>
-    $for tag, hash in tags:
-      <li class="tag"><a href="/t/tag/$hash">$tag</a></li>
+    $for t in tags:
+      <li class="tag"><a href="/t/tag/$t['_id']">$t['name']</a></li>
   </ul>
 </div>
