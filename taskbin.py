@@ -44,16 +44,21 @@ class Move:
             task.move(id, 'next')
         raise web.seeother('/t/%s' % input.f)
 
+#class Detail:
+#    def GET(self, taskId):
+#        detail = task.detail(taskId)
+#        doc = detail[0]
+#        name = doc['task']
+#        id = doc['_id']
+#        type = doc['type']
+#        posted = when_posted(doc['posted'])
+#        tags = detail[1:] 
+#        return render.task_detail(name, id, type, posted, tags)
 class Detail:
     def GET(self, taskId):
-        detail = task.detail(taskId)
-        doc = detail[0]
-        name = doc['task']
-        id = doc['_id']
-        type = doc['type']
-        posted = when_posted(doc['posted'])
-        tags = detail[1:] 
-        return render.task_detail(name, id, type, posted, tags)
+        t, tags = task.detail(taskId)
+        posted = when_posted(t['posted'])
+        return render.task_detail(t['task'], t['_id'], t['type'], posted, tags)
 
 class Trash:
     def GET(self):

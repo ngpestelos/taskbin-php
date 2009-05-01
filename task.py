@@ -24,9 +24,13 @@ def next():
 def inbox():
     return _view('inbox')
 
+#def detail(taskId):
+#    return [r.value for r in db.view('_design/taskbin/_view/detail', \
+#      startkey=[taskId, 0], endkey=[taskId, 1])]
 def detail(taskId):
-    return [r.value for r in db.view('_design/taskbin/_view/detail', \
-      startkey=[taskId, 0], endkey=[taskId, 1])]
+    task = db[taskId]
+    tags = [get_tag(t) for t in task.get('tags', [])]
+    return task, tags
 
 def _view(type):
     return [r.value for r in db.view('_design/taskbin/_view/%s' % type, \
@@ -37,6 +41,13 @@ def make_tag(tag):
         pass
     else:
         db.create({'type' : 'tag', 'name' : tag, 'posted': datetime.today().ctime()})
+
+def get_tag(name):
+    res = [r.value for r in db.view('_design/taskbin/_view/tags', key=name)]
+    if res:
+        return res[0]
+    else:
+        return None
 
 def post(task, tags):
     stripped_tags = [t.strip() for t in tags.split(',')]

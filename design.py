@@ -20,16 +20,6 @@ doc = {
     'next'    : { 'map' : _tasks('next')  },
     'someday' : { 'map' : _tasks('someday') },
     'trash'   : { 'map' : _tasks('trash') },
-    'detail'  : {
-      'map' : '''function(doc) {
-                   if (doc.type != 'tag') {
-                      emit([doc._id, 0], doc);
-                   }
-                   else if (doc.type == 'tag') {
-                      emit([doc.task, 1], doc);
-                   }
-                 }'''
-    },
     'tags'    : {
       'map' : '''function(doc) {
                    if (doc.type == 'tag')
