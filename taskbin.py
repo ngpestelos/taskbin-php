@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import web, web.utils
-import task, design
+import task, design, searchengine
 from datetime import datetime
 import time
 
@@ -79,7 +79,8 @@ class Inbox:
 class Search:
     def POST(self):
         input = web.input()
-        return "search is disabled"
+        tasks = searchengine.find(input.q)
+        return render.search_results(input.q, tasks)
 
 class Tags:
     def GET(self):

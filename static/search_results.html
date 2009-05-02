@@ -1,0 +1,11 @@
+$def with (query, tasks)
+
+$var title = "Search Results"
+
+<div id="bin" class="prepend-2 span-18">
+  <h3>Search results for '$query' ($len(tasks))</h3>
+  <ul>
+    $for t in tasks:
+      <li class="$t['type']"><a href="/t/task/$t['_id']">$t['task']</a></li>
+  </ul>
+</div>
