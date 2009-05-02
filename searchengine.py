@@ -1,7 +1,11 @@
 from couchdb import Server
 import re
+from datetime import datetime
 
 db = Server()['taskbin']
+
+def save_query(q):
+    db.create({'type' : 'search', 'q' : q, 'posted' : datetime.today().ctime()})
 
 def filter_keys(keys):
     matches = {}
@@ -22,8 +26,9 @@ def get_tasks(word):
     return [r.value for r in db.view('_design/taskbin/_view/words', key=word)]
 
 def find(q):
+    save_query(q)
     words = q.split(' ')
-    keys = get_keys(words[0])
+    keys = get_keys(words[0]) # TODO multi-word search
     out = []
     for k in keys:
         out.extend(get_tasks(k))

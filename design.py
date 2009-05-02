@@ -61,6 +61,12 @@ doc = {
                        emit(w[i].toLowerCase(), null);
                    }
                  }'''
+    },
+    'search' : {
+      'map' : '''function(doc) {
+                   if (doc.type == 'search')
+                     emit(doc._id, doc);
+                 }'''
     }
   }
 }
