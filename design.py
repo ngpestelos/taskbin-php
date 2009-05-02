@@ -28,7 +28,8 @@ doc = {
     },
     'by_tag'  : {
       'map' : '''function(doc) {
-                   if (doc.type != 'tag' && doc.tags) {
+                   var type = /someday|inbox|next|trash/.test(doc.type);
+                   if (type && doc.tags) {
                      var i;
                      for (i = 0; i < doc.tags.length; i += 1)
                        emit(doc.tags[i], doc._id);
@@ -37,7 +38,8 @@ doc = {
     },
     'tasks'   : {
       'map' : '''function(doc) {
-                   if (doc.type != 'tag') {
+                   var type = /someday|inbox|next|trash/.test(doc.type);
+                   if (type) {
                      emit(doc._id, doc);
                    }
                  }'''
