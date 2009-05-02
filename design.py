@@ -50,6 +50,15 @@ doc = {
                        emit(w[i].toLowerCase(), doc);
                    }
                  }'''
+    },
+    'words_only' : {
+      'map' : '''function(doc) {
+                   if (doc.task) {
+                     var w = doc.task.split(/\W+/);
+                     for (var i = 0; i < w.length; i++)
+                       emit(w[i].toLowerCase(), null);
+                   }
+                 }'''
     }
   }
 }
