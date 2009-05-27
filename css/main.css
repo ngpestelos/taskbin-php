@@ -1,0 +1,7 @@
+#tags { margin-top: 64px; }
+#tags ul { list-style: none; }
+#tags li { display: inline; margin-right: 4px; }
+
+#nav { text-align: right; }
+#nav ul { list-style: none; }
+#nav li { display: inline; }
