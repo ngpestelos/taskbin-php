@@ -32,7 +32,7 @@ doc = {
                    if (type && doc.tags) {
                      var i;
                      for (i = 0; i < doc.tags.length; i += 1)
-                       emit(doc.tags[i], doc._id);
+                       emit(doc.tags[i], doc);
                    }
                  }''' 
     },
