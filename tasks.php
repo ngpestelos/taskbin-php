@@ -3,12 +3,8 @@
 require_once ("couchdb.php");
 
 function get_tasks($tag) {
-  try {
-    $db = new CouchDB('taskbin');
-    return $db->get_item('_design/taskbin/_view/by_tag?key=' . '"' . $tag . '"');
-  } catch (CouchDBException $e) { 
-    die($e->errorMessage() . "\n"); 
-  }
+  $db = new CouchDB('taskbin');
+  return $db->get_item('_design/taskbin/_view/by_tag?key=' . '"' . $tag . '"');
 }
 
 ?>
@@ -33,9 +29,14 @@ function get_tasks($tag) {
         <ol>
         <?php
           $result = get_tasks($_GET['tag']);
-          echo "<li>";
-          print_r($result->getBody(true));
-          echo "</li>";
+          $rows = $result->getBody(true) ? $result->getBody(true)->rows : array();
+          foreach ($rows as $task) {
+            echo "<li>";
+            echo '<a href="task.php?id=' . $task->value->_id . '">';
+            echo $task->value->task;
+            echo '</a>';
+            echo "</li>";
+          }
         ?>
         </ol>
       </div>
