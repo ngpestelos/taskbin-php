@@ -26,7 +26,7 @@ function get_tasks($tag) {
     <div class="container">
       <?php include ("nav.php"); ?>
       <div id="tasks" class="span-16 push-1 append-7">
-        <h3>Tasks tagged as <?php echo("'" . $_GET['tag'] . "'"); ?></h3>
+        <h3>Tagged as <?php echo("'" . $_GET['tag'] . "'"); ?></h3>
         <ol>
         <?php
           $rows = get_tasks($_GET['tag']);
