@@ -8,8 +8,8 @@ foreach ($tags as $t) {
 
 $task = json_encode($_POST['task']);
 $tags = json_encode($stripped);
-$bin  = json_encode($_POST['bin']);
-$doc  = '{' . '"task" : ' . $task . ', "tags" : ' . $tags . ', "bin" : ' . $bin . '}';
+$type  = json_encode($_POST['type']);
+$doc  = '{' . '"task" : ' . $task . ', "tags" : ' . $tags . ', "type" : ' . $type . '}';
 
 require_once ("couchdb.php");
 $db = new CouchDB('taskbin2');

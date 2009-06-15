@@ -53,13 +53,13 @@
           <p id="send">
             <span>Send To</span><br />
             <label for="inbox">
-              <input type="radio" id="inbox" name="bin" value="inbox" checked />Inbox
+              <input type="radio" id="inbox" name="type" value="inbox" checked />Inbox
             </label>
             <label for="someday">
-              <input type="radio" id="someday" name="bin" value="someday" />Someday
+              <input type="radio" id="someday" name="type" value="someday" />Someday
             </label>
             <label for="next">
-              <input type="radio" id="next" name="bin" value="next" />Next
+              <input type="radio" id="next" name="type" value="next" />Next
             </label>
           </p>
           <p class="submit">
