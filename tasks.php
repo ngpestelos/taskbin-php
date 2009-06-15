@@ -1,13 +1,15 @@
 <?php
 
 $type = $_GET['type'];
+$tag  = $_GET['tag'];
 
 require_once ("couchdb.php");
 $db = new CouchDB('taskbin2');
 $result = $db->get_item('_design/t/_view/' . $type);
+
 $total_rows = $result->getBody(true)->total_rows;
 $rows = $result->getBody(true)->rows;
-
+$title = isset($type) ? $type : $tag;
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -24,23 +26,16 @@ $rows = $result->getBody(true)->rows;
   <body>
     <div class="container">
       <?php include("header.php"); ?>
-      <div id="tasks" class="span-14 push-1">
+      <div id="tasks" class="main_content span-14 push-1">
         <h3>
-          <?php
-            if ($total_rows == 0)
-              echo "Found 0 items";
-            else if ($total_rows == 1)
-              echo "Found 1 item";
-            else
-              echo "Found " . $total_rows . " items";
-          ?>
+          <?php echo $title . " ($total_rows)"; ?>
         </h3>
         <?php
           if ($total_rows > 0) {
             echo "<ol>";
             foreach ($rows as $r) {
               echo "<li>";
-              echo $r->value->task;
+              echo "<a href=\"details.php?id=" . $r->value->_id . "\">" . $r->value->task . "</a>";
               echo "</li>";
             }
             echo "</ol>";

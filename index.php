@@ -23,7 +23,7 @@
   <body>
     <div class="container">
       <?php include("header.php"); ?>
-      <div id="new" class="span-14 push-1">
+      <div id="new" class="main_content span-14 push-1">
         <form action="new.php" method="post">
           <p>
             <label for="task" class="mid">New Task</label><br />
