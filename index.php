@@ -27,12 +27,12 @@
         <form action="new.php" method="post">
           <p>
             <label for="task" class="mid">New Task</label><br />
-            <input type="text" id="task" name="task" class="big" 
-              size="47" maxlength="47" />
+            <input type="text" id="task" name="task" class="mid" 
+              size="48" maxlength="48" />
           </p>
           <p>
             <label for="new_tags" class="mid">Tags</label><br />
-            <input type="text" id="new_tags" size="36" maxlength="36"
+            <input type="text" id="new_tags" size="24" maxlength="24"
               class="mid" name="new_tags" />
           </p>
           <p id="send">

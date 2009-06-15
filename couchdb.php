@@ -132,6 +132,10 @@ class CouchDB {
     return $this->send('', 'post', $doc);
   }
 
+  function update($id, $doc) {
+    return $this->send($id, 'put', $doc);
+  }
+
 }
 
 class CouchDBException extends Exception {

@@ -47,7 +47,7 @@ function move_url($_id, $_type) {
         </ul>
         <h5>Move</h5>
         <ul>
-          <li><a href="<?php echo move_url($id, 'inbox'); ?>">Next</a></li>
+          <li><a href="<?php echo move_url($id, 'next'); ?>">Next</a></li>
           <li><a href="<?php echo move_url($id, 'someday'); ?>">Someday</a></li>
           <li><a href="<?php echo move_url($id, 'trash'); ?>">Trash</a></li>
         </ul>

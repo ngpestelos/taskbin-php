@@ -8,7 +8,7 @@ foreach ($tags as $t) {
 
 $task = json_encode($_POST['task']);
 $tags = json_encode($stripped);
-$type  = json_encode($_POST['type']);
+$type = json_encode($_POST['type']);
 $doc  = '{' . '"task" : ' . $task . ', "tags" : ' . $tags . ', "type" : ' . $type . '}';
 
 require_once ("couchdb.php");
