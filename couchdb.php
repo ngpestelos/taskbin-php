@@ -128,6 +128,10 @@ class CouchDB {
     return $this->send('/' . $id);
   }
 
+  function create($doc) {
+    return $this->send('', 'post', $doc);
+  }
+
 }
 
 class CouchDBException extends Exception {
