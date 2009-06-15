@@ -15,24 +15,9 @@
     </script>
     <title>Welcome | taskbin</title>
     <style>
-      body {
-        font-family: Verdana, sans-serif;
-        color: #22222B;
-      }
-      #nav { text-align: right; }
-      #nav ul { list-style: none; }
-      #nav li { display: inline; }
-      #header { border-bottom: 1px solid #797979; }
-      .site_id { margin-top: 5px; color #797979; }
-      #footer { margin-top: 256px; border-top: 1px solid #797979; }
-      /*#new { margin-top: 4px; border: 1px solid green; }*/
-      #new { margin-top: 24px; }
-      #tags { margin-top: 24px; border: 1px solid red; }
       #send span { font-size: 12px; font-weight: bold; }
       #send label { font-weight: normal; }
-      .big { font-size: 18px; }
-      .mid { font-size: 14px; }
-      .submit { margin-top: 36; }
+      .submit { margin-top: 36px; }
     </style> 
   </head>
   <body>

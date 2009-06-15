@@ -1,12 +1,12 @@
 <?php
 
-require_once ("couchdb.php");
+$type = $_GET['type'];
 
-function get_tasks($tag) {
-  $db = new CouchDB('taskbin');
-  $response = $db->get_item('_design/taskbin/_view/by_tag?key=' . '"' . urlencode($tag) . '"');
-  return $response->getBody(true) ? $response->getBody(true)->rows : array();
-}
+require_once ("couchdb.php");
+$db = new CouchDB('taskbin2');
+$result = $db->get_item('_design/t/_view/' . $type);
+$total_rows = $result->getBody(true)->total_rows;
+$rows = $result->getBody(true)->rows;
 
 ?>
 
@@ -18,29 +18,37 @@ function get_tasks($tag) {
     <link rel="stylesheet" href="css/screen.css" type="text/css" media="screen, projection" />
     <link rel="stylesheet" href="css/print.css" type="text/css" media="print" />
     <!--[if IE]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen, projection" /><![endif]-->
-    <link rel="stylesheet" href="css/main.css" type="text/css" media="screen, projection" />
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <title>Tagged Tasks | taskbin</title>
+    <title>Tasks | taskbin</title>
+    <link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
   </head>
   <body>
     <div class="container">
-      <?php include ("nav.php"); ?>
-      <div id="tasks" class="span-16 push-1 append-7">
-        <h3>Tagged as <?php echo("'" . $_GET['tag'] . "'"); ?></h3>
-        <ol>
+      <?php include("header.php"); ?>
+      <div id="tasks" class="span-14 push-1">
+        <h3>
+          <?php
+            if ($total_rows == 0)
+              echo "Found 0 items";
+            else if ($total_rows == 1)
+              echo "Found 1 item";
+            else
+              echo "Found " . $total_rows . " items";
+          ?>
+        </h3>
         <?php
-          $rows = get_tasks($_GET['tag']);
-          foreach ($rows as $task) {
-            echo "<li>";
-            echo '<a href="task.php?id=' . $task->value->_id . '">';
-            echo $task->value->task;
-            echo '</a>';
-            echo "</li>";
+          if ($total_rows > 0) {
+            echo "<ol>";
+            foreach ($rows as $r) {
+              echo "<li>";
+              echo $r->value->task;
+              echo "</li>";
+            }
+            echo "</ol>";
           }
         ?>
-        </ol>
       </div>
-      <?php include ("tags.php"); ?>
+      <?php include("tags.php"); ?>
+      <?php include("footer.php"); ?>
     </div>
   </body>
 </html>

@@ -1,7 +1,20 @@
-#tags { margin-top: 64px; }
-#tags ul { list-style: none; }
-#tags li { display: inline; margin-right: 4px; }
+body { font-family: Verdana, sans-serif; color: #22222B; }
 
 #nav { text-align: right; }
 #nav ul { list-style: none; }
 #nav li { display: inline; }
+
+#header { border-bottom: 1px solid #797979; }
+
+.site_id { margin-top: 5px; margin-bottom: 1px; solid #797979; }
+
+#footer { margin-top: 256px; border-top: 1px solid #797979; }
+
+#new { margin-top: 36px; }
+
+#tags { margin-top: 36px; border: 1px solid red; }
+
+.big { font-size: 18px; }
+.mid { font-size: 14px; }
+
+#tasks { margin-top: 36px; }
