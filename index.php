@@ -10,32 +10,65 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript">
       $(document).ready(function() {  
-        $("#q").focus();
+        $("#task").focus();
       });
     </script>
     <title>Welcome | taskbin</title>
     <style>
+      body {
+        font-family: Verdana, sans-serif;
+        color: #22222B;
+      }
       #nav { text-align: right; }
       #nav ul { list-style: none; }
       #nav li { display: inline; }
-      #q_form { margin-top: 48px; }
-      #q_search { margin-left: 8px; margin-right: 4px; }
+      #header { border-bottom: 1px solid #797979; }
+      .site_id { margin-top: 5px; color #797979; }
+      #footer { margin-top: 256px; border-top: 1px solid #797979; }
+      /*#new { margin-top: 4px; border: 1px solid green; }*/
+      #new { margin-top: 24px; }
+      #tags { margin-top: 24px; border: 1px solid red; }
+      #send span { font-size: 12px; font-weight: bold; }
+      #send label { font-weight: normal; }
+      .big { font-size: 18px; }
+      .mid { font-size: 14px; }
+      .submit { margin-top: 36; }
     </style> 
   </head>
   <body>
     <div class="container">
-      <?php include("nav.php"); ?>
-      <div id="q_form" class="span-14 push-5">
-        <form method="post" action="taskbin.php">
-          <fieldset>
-            <legend>taskbin</legend>
-            <input type="text" name="q" id="q" size="47" maxlength="57" />
-            <input id="q_search" name="q_button" type="submit" value="Search" />
-            <input id="q_new" name="q_button" type="submit" value="New Task" />
-          </fieldset>
+      <?php include("header.php"); ?>
+      <div id="new" class="span-14 push-1">
+        <form action="new.php" method="post">
+          <p>
+            <label for="task" class="mid">New Task</label><br />
+            <input type="text" id="task" name="task" class="big" 
+              size="47" maxlength="47" />
+          </p>
+          <p>
+            <label for="new_tags" class="mid">Tags</label><br />
+            <input type="text" id="new_tags" size="36" maxlength="36"
+              class="mid" name="new_tags" />
+          </p>
+          <p id="send">
+            <span>Send To</span><br />
+            <label for="inbox">
+              <input type="radio" id="inbox" name="bin" value="inbox" checked />Inbox
+            </label>
+            <label for="someday">
+              <input type="radio" id="someday" name="bin" value="someday" />Someday
+            </label>
+            <label for="next">
+              <input type="radio" id="next" name="bin" value="next" />Next
+            </label>
+          </p>
+          <p class="submit">
+            <input type="submit" name="submit" value="Submit" />
+          </p>
         </form>
       </div>
       <?php include("tags.php"); ?>
+      <?php include("footer.php"); ?>
     </div>
   </body>
 </html>
