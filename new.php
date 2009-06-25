@@ -9,7 +9,11 @@ foreach ($tags as $t) {
 $task = json_encode($_POST['task']);
 $tags = json_encode($stripped);
 $type = json_encode($_POST['type']);
-$doc  = '{' . '"task" : ' . $task . ', "tags" : ' . $tags . ', "type" : ' . $type . '}';
+$posted = json_encode(date('c'));
+$updated = $posted;
+$doc  = '{' . '"task" : ' . $task . ', "tags" : ' . $tags 
+  . ', "type" : ' . $type . ', "posted" : ' . $posted
+  . ', "updated" : ' . $updated . '}';
 
 require_once ("couchdb.php");
 $db = new CouchDB('taskbin2');
