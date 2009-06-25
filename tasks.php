@@ -26,6 +26,7 @@ $title = isset($type) ? $type : $tag;
   <body>
     <div class="container">
       <?php include("header.php"); ?>
+      <?php include("nav.php"); ?>
       <div id="tasks" class="main_content span-14 push-1">
         <h3>
           <?php echo $title . " ($total_rows)"; ?>

@@ -13,7 +13,7 @@ body {
   margin-right: 8px;
 }
 
-#header { background-color: #C6C4D4; }
+#header { background-color: #8CBDA9; }
 .site_id { margin-top: 24px; padding-left: 8px; }
 .site_id a { text-decoration: none; color: black; }
 
@@ -25,3 +25,5 @@ body {
 
 .big { font-size: 18px; }
 .mid { font-size: 14px; }
+
+#tasks li { margin-bottom: 8px; }
