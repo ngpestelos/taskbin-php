@@ -9,7 +9,7 @@ foreach ($tags as $t) {
 $task = json_encode($_POST['task']);
 $tags = json_encode($stripped);
 $type = json_encode($_POST['type']);
-$posted = json_encode(date('c'));
+$posted = json_encode(date('D M j G:i:s Y'));
 $updated = $posted;
 $doc  = '{' . '"task" : ' . $task . ', "tags" : ' . $tags 
   . ', "type" : ' . $type . ', "posted" : ' . $posted
