@@ -34,7 +34,7 @@ function move_url($_id, $_type) {
     <div class="container">
       <?php include("header.php"); ?>
       <?php include("nav.php"); ?>
-      <div id="details" class="main_content span-14 push-1">
+      <div id="details" class="main_content span-18 push-1">
         <h3><?php echo $task . " ($type)"; ?></h3>
         <h5>Tags</h5>
         <ul>
