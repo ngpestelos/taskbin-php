@@ -21,7 +21,7 @@ doc = {
 }
 
 def load():
-    db = Server()['taskbin2']
+    db = Server()['taskbin']
     if db.get('_design/t'):
         _doc = db['_design/t']
         db.delete(_doc)

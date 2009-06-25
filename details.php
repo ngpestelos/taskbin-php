@@ -3,7 +3,7 @@
 $id = $_GET['id'];
 
 require_once("couchdb.php");
-$db = new CouchDB('taskbin2');
+$db = new CouchDB('taskbin');
 $result = $db->get_item($id);
 $task = $result->getBody(true)->task;
 $type = $result->getBody(true)->type;

@@ -16,7 +16,7 @@ $doc  = '{' . '"task" : ' . $task . ', "tags" : ' . $tags
   . ', "updated" : ' . $updated . '}';
 
 require_once ("couchdb.php");
-$db = new CouchDB('taskbin2');
+$db = new CouchDB('taskbin');
 $db->create($doc);
 
 $redirect = "/replacement";

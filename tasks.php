@@ -4,7 +4,7 @@ $type = $_GET['type'];
 $tag  = $_GET['tag'];
 
 require_once ("couchdb.php");
-$db = new CouchDB('taskbin2');
+$db = new CouchDB('taskbin');
 $result = $db->get_item('_design/t/_view/' . $type);
 
 $total_rows = $result->getBody(true)->total_rows;

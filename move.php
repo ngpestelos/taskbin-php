@@ -1,7 +1,7 @@
 <?php
 
 require_once ("couchdb.php");
-$db = new CouchDB('taskbin2');
+$db = new CouchDB('taskbin');
 $id = $_GET['id'];
 $result = $db->get_item($id);
 $rev  = json_encode($result->getBody(true)->_rev);
