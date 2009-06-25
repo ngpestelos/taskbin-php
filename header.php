@@ -1,4 +1,4 @@
-<div id="header">
+<div id="header" class="span-24">
   <h3 class="site_id">taskbin</h3>
   <div id="nav">
     <ul>

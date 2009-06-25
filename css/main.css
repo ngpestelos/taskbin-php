@@ -1,14 +1,17 @@
-body { font-family: Verdana, sans-serif; color: #22222B; }
+body {
+  background-color: #E0E0E0;
+  color: black;
+  font: 16px Palatino, Georgia, "Times New Roman", serif;
+}
 
 #nav { text-align: right; }
 #nav ul { list-style: none; }
 #nav li { display: inline; }
 
-#header { border-bottom: 1px solid #797979; }
+#header { background-color: #C6C4D4; }
+.site_id { margin-top: 24px; padding-left: 8px; }
 
-.site_id { margin-top: 5px; margin-bottom: 1px; solid #797979; }
-
-#footer { margin-top: 256px; border-top: 1px solid #797979; }
+#footer { margin-top: 192px; border-top: 1px solid #797979; }
 
 .main_content { margin-top: 36px; }
 
