@@ -4,12 +4,18 @@ body {
   font: 16px Palatino, Georgia, "Times New Roman", serif;
 }
 
-#nav { text-align: right; }
-#nav ul { list-style: none; }
-#nav li { display: inline; }
+#nav { margin-top: 12px; padding: 0; font-size: 14px; }
+#nav ul { list-style: none; margin: 0; padding-left: 8px; }
+#nav li {
+  display: inline;
+  /*border: 1px solid black;*/
+  padding: 2px 4px;
+  margin-right: 8px;
+}
 
 #header { background-color: #C6C4D4; }
 .site_id { margin-top: 24px; padding-left: 8px; }
+.site_id a { text-decoration: none; color: black; }
 
 #footer { margin-top: 192px; border-top: 1px solid #797979; }
 

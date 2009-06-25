@@ -23,6 +23,14 @@
   <body>
     <div class="container">
       <?php include("header.php"); ?>
+      <div id="nav" class="span-12">
+        <ul>
+          <li><a href="tasks.php?type=inbox">Inbox</a></li>
+          <li><a href="tasks.php?type=next">Next</a></li>
+          <li><a href="tasks.php?type=someday">Someday</a></li>
+          <li><a href="tasks.php?type=trash">Trash</a></li>
+        </ul>
+      </div>
       <div id="new" class="main_content span-14 push-1">
         <form action="new.php" method="post">
           <p>
@@ -40,11 +48,11 @@
             <label for="inbox">
               <input type="radio" id="inbox" name="type" value="inbox" checked />Inbox
             </label>
-            <label for="someday">
-              <input type="radio" id="someday" name="type" value="someday" />Someday
-            </label>
             <label for="next">
               <input type="radio" id="next" name="type" value="next" />Next
+            </label>
+            <label for="someday">
+              <input type="radio" id="someday" name="type" value="someday" />Someday
             </label>
           </p>
           <p class="submit">
