@@ -35,6 +35,7 @@ function move_url($_id, $_type) {
       <?php include("header.php"); ?>
       <?php include("nav.php"); ?>
       <div id="details" class="main_content span-18 push-1">
+        <?php $task = str_replace("\'", "'", $task); ?>
         <h3><?php echo $task . " ($type)"; ?></h3>
         <h5>Tags</h5>
         <ul>

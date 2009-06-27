@@ -36,7 +36,8 @@ $title = isset($type) ? $type : $tag;
             echo "<ol>";
             foreach ($rows as $r) {
               echo "<li>";
-              echo "<a href=\"details.php?id=" . $r->value->_id . "\">" . $r->value->task . "</a>";
+              $task = str_replace("\'", "'", $r->value->task);
+              echo "<a href=\"details.php?id=" . $r->value->_id . "\">" . $task . "</a>";
               echo "</li>";
             }
             echo "</ol>";
