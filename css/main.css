@@ -23,7 +23,7 @@ body {
 
 #tags { margin-top: 36px; border: 1px solid red; }
 
-.big { font-size: 18px; }
+.big { font-size: 18px; padding: 5px; margin-top: 4px; }
 .mid { font-size: 14px; }
 
 #tasks li { margin-bottom: 8px; }

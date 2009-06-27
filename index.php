@@ -18,23 +18,24 @@
       #send span { font-size: 12px; font-weight: bold; }
       #send label { font-weight: normal; }
       .submit { margin-top: 36px; }
+      .wider { width: 600px; }
     </style> 
   </head>
   <body>
     <div class="container">
       <?php include("header.php"); ?>
       <?php include("nav.php"); ?>
-      <div id="new" class="main_content span-14 push-1">
+      <div id="new" class="main_content span-23 push-1">
         <form action="new.php" method="post">
           <p>
             <label for="task" class="mid">New Task</label><br />
-            <input type="text" id="task" name="task" class="mid" 
+            <input type="text" id="task" name="task" class="big" 
               size="48" maxlength="48" />
           </p>
           <p>
             <label for="new_tags" class="mid">Tags</label><br />
             <input type="text" id="new_tags" size="24" maxlength="24"
-              class="mid" name="new_tags" />
+              class="big" name="new_tags" />
           </p>
           <p id="send">
             <span>Send To</span><br />
