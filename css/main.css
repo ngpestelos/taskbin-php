@@ -27,7 +27,20 @@ body {
 
 .main_content { margin-top: 36px; }
 
-#tags { margin-top: 36px; border: 1px solid red; }
+#tags { 
+  margin-top: 36px;
+  background-color: #8AA2B6;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #2D5576;
+}
+
+#tags ul { list-style-type: none; margin: 0; }
+
+#tags li {
+  margin-bottom: 8px;
+  margin-left: -2px;
+}
 
 .big { font-size: 18px; padding: 5px; margin-top: 4px; }
 .mid { font-size: 14px; }

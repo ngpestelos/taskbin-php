@@ -28,13 +28,20 @@ function move_url($_id, $_type) {
     <style>
       #send span { font-size: 12px; font-weight: bold; }
       #send label { font-weight: normal; }
+      #move {
+        margin-top: 36px;
+        background-color: #8AA2B6;
+        font-size: 13px;
+        padding: 4px;
+        border: 1px solid #2D5576;
+      }
     </style>
   </head>
   <body>
     <div class="container">
       <?php include("header.php"); ?>
       <?php include("nav.php"); ?>
-      <div id="details" class="main_content span-18 push-1">
+      <div id="details" class="main_content span-17 push-1">
         <?php $task = str_replace("\'", "'", $task); ?>
         <h3><?php echo $task . " ($type)"; ?></h3>
         <h5>Tags</h5>
@@ -47,6 +54,8 @@ function move_url($_id, $_type) {
             }
           ?>
         </ul>
+      </div>
+      <div id="move" class="span-4 push-1 last">
         <h5>Move</h5>
         <ul>
           <li><a href="<?php echo move_url($id, 'next'); ?>">Next</a></li>
@@ -54,8 +63,6 @@ function move_url($_id, $_type) {
           <li><a href="<?php echo move_url($id, 'trash'); ?>">Trash</a></li>
         </ul>
       </div>
-      <?php include("tags.php"); ?>
-      <?php include("footer.php"); ?>
     </div>
   </body>
 </html>

@@ -1,3 +1,3 @@
 <div id="footer" class="span-24">
-  <a href="#">nwiki</a>
+  <a href="#">#</a>
 </div>
