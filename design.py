@@ -56,13 +56,6 @@ tags_doc = {
   }
 }
 
-def load():
-    db = Server()['taskbin']
-    if db.get('_design/t'):
-        _doc = db['_design/t']
-        db.delete(_doc)
-    db['_design/t'] = doc
-
 def load_tags():
     """Creates the tags design doc."""
     db = get_db()
