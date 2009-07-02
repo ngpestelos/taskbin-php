@@ -32,6 +32,30 @@ doc = {
   }
 }
 
+def count_map():
+    return '''
+    function (doc) {
+      if (doc.tags) {
+        var i;
+        for (i = 0; i < doc.tags.length; i++)
+          emit(doc.tags[i], 1);
+      }        
+    }
+    '''
+
+def count_reduce():
+    return '''
+    function(key, values, rereduce) {
+      return sum(values);
+    }'''
+
+tags_doc = {
+  'language' : 'javascript',
+  'views' : {
+    'count' : { 'map' : count_map(), 'reduce' : count_reduce() }
+  }
+}
+
 def load():
     db = Server()['taskbin']
     if db.get('_design/t'):
@@ -39,13 +63,23 @@ def load():
         db.delete(_doc)
     db['_design/t'] = doc
 
+def load_tags():
+    """Creates the tags design doc."""
+    db = get_db()
+    db['_design/tags'] = tags_doc
+
 def clear():
     """Deletes existing design docs"""
-    db = Server()['taskbin']
-    _old = db['_design/taskbin']
-    db.delete(_old)
-    _t = db['_design/t']
-    db.delete(_t)
+    def d(doc):
+        db = get_db()
+        if db.get(doc):
+            db.delete(db[doc])
+    d('_design/taskbin')
+    d('_design/t')
+    d('_design/tags')
+
+def get_db():
+    return Server()['taskbin']
 
 if __name__ == '__main__':
-    load()
+    load_tags()
