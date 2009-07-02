@@ -1,5 +1,17 @@
+<?php
+
+require_once("couchdb.php");
+$db = new CouchDB('taskbin');
+$result = $db->get_item('_design/tags/_view/count?group=true');
+$rows = $result->getBody(true)->rows;
+
+?>
 <ul>
-  <li>Tag 1</li>
-  <li>Tag 2</li>
-  <li>Tag 3</li>
+<?php
+  foreach ($rows as $r) {
+    echo "<li>";
+    echo $r->key;
+    echo "</li>";
+  }
+?>  
 </ul>
