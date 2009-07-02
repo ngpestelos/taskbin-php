@@ -25,7 +25,7 @@ body {
 
 #footer { margin-top: 192px; border-top: 1px solid #797979; }
 
-#new, #tasks { margin-top: 36px; }
+#new, #tasks, #details { margin-top: 36px; }
 
 #tags { 
   margin-top: 36px;
