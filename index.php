@@ -24,7 +24,7 @@
     <div class="container">
       <?php include("header.php"); ?>
       <?php include("nav.php"); ?>
-      <div id="new" class="main_content span-17 push-1">
+      <div id="new" class="main_content span-16 push-3">
         <form action="new.php" method="post">
           <p>
             <label for="task" class="mid">New Task</label><br />
