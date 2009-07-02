@@ -39,5 +39,13 @@ def load():
         db.delete(_doc)
     db['_design/t'] = doc
 
+def clear():
+    """Deletes existing design docs"""
+    db = Server()['taskbin']
+    _old = db['_design/taskbin']
+    db.delete(_old)
+    _t = db['_design/t']
+    db.delete(_t)
+
 if __name__ == '__main__':
     load()
