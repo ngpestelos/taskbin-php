@@ -45,9 +45,18 @@ def count_map():
 
 def count_reduce():
     return '''
-    function(key, values, rereduce) {
-      return sum(values);
+    function(keys, values, rereduce) {
+      var tags = {};
+      var i;
+      for (i = 0; i < keys.length; i++)
+        tags[keys[i][0]] = 0;
+      var j;
+      for (j = 0; j < keys.length; j++) {
+        tags[keys[j][0]] += 1;
+      }
+      return tags;
     }'''
+
 
 tags_doc = {
   'language' : 'javascript',
@@ -55,6 +64,7 @@ tags_doc = {
     'count' : { 'map' : count_map(), 'reduce' : count_reduce() }
   }
 }
+
 
 def load_tags():
     """Creates the tags design doc."""
