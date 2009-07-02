@@ -10,13 +10,25 @@ def _tasks(type):
     }''' % type
     return fun
 
+def tags():
+    fun = '''
+    function(doc) {
+      if (doc.tags) {
+        var i;
+        for (i = 0; i < doc.tags.length; i++)
+          emit(doc.tags[i], doc);
+      }
+    }'''
+    return fun
+
 doc = {
   'language' : 'javascript',
   'views' : {
     'inbox'   : { 'map' : _tasks('inbox') },
     'next'    : { 'map' : _tasks('next')  },
     'someday' : { 'map' : _tasks('someday') },
-    'trash'   : { 'map' : _tasks('trash') }
+    'trash'   : { 'map' : _tasks('trash') },
+    'tags'    : { 'map' : tags() }
   }
 }
 

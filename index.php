@@ -53,7 +53,10 @@
           </p>
         </form>
       </div>
-      <?php include("tags.php"); ?>
+      <div id="tags" class="span-4 last">
+        <h4>Tags</h4>
+        <?php include("tags.php"); ?>
+      </div>
       <?php include("footer.php"); ?>
     </div>
   </body>

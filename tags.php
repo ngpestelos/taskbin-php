@@ -1,3 +1,5 @@
-<div id="tags" class="span-4 last">
-  <h3 style="margin-left: 8px;">Tags Go Here<h3>
-</div>
+<ul>
+  <li>Tag 1</li>
+  <li>Tag 2</li>
+  <li>Tag 3</li>
+</ul>
