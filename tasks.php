@@ -5,10 +5,11 @@ $tag  = $_GET['tag'];
 
 require_once ("couchdb.php");
 $db = new CouchDB('taskbin');
-$result = $db->get_item('_design/t/_view/' . $type);
+$result = $db->get_item('_design/tasks/_view/' . $type);
 
 $total_rows = $result->getBody(true)->total_rows;
 $rows = $result->getBody(true)->rows;
+$rows = array_reverse($rows);
 $title = isset($type) ? $type : $tag;
 ?>
 
