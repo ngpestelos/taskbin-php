@@ -25,10 +25,10 @@ body {
 
 #footer { margin-top: 64px; border-top: 1px solid #797979; }
 
-#new, #tasks, #details { margin-top: 36px; }
+#new, #tasks, #details { margin-top: 48px; }
 
 #tags {
-  margin-top: 36px;
+  margin-top: 48px;
   padding-left: 12px;
   border-left: 1px solid #797979;
 }
