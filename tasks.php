@@ -45,7 +45,6 @@ $title = isset($type) ? $type : $tag;
           }
         ?>
       </div>
-      <?php include("footer.php"); ?>
     </div>
   </body>
 </html>

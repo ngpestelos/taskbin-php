@@ -57,7 +57,6 @@
         <h4>Tags</h4>
         <?php include("tags.php"); ?>
       </div>
-      <?php include("footer.php"); ?>
     </div>
   </body>
 </html>
