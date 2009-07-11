@@ -45,6 +45,7 @@ $title = isset($type) ? $type : $tag;
           }
         ?>
       </div>
+      <div class="span-24" style="border-top: 1px solid black" />
     </div>
   </body>
 </html>
