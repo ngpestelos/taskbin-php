@@ -10,7 +10,7 @@ $rows = $result->getBody(true)->rows;
 <?php
   foreach ($rows as $r) {
     echo "<li>";
-    echo $r->key;
+    echo "<a href=\"tagdetail.php?id=" . urlencode($r->key) . "\">" . $r->key . "</a>";
     echo "</li>";
   }
 ?>  
