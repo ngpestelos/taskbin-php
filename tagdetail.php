@@ -16,7 +16,9 @@ $rows = $result->getBody(true)->rows;
   <?php
     foreach ($rows as $r) {
       echo "<li>";
-      echo $r->value->task;
+      echo '<a href="details.php?id=' . $r->value->_id . '">';
+      echo stripslashes($r->value->task);
+      echo "</a>" . " (" . $r->value->type . ")";
       echo "</li>";
     }
   ?>
