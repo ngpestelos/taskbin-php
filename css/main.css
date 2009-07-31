@@ -1,47 +1,11 @@
 body {
-  background-color: #E0E0E0;
   font: 16px Georgia, "Times New Roman", serif;
 }
 
-#nav {
-  margin: 0;
-  padding-top: 8px;
-  padding-bottom: 8px; 
-  font-size: 14px; 
-  background-color: #2E7B5C;
-}
-#nav ul { list-style: none; margin: 0; padding-left: 8px; }
-#nav li {
-  display: inline;
-  /*border: 1px solid black;*/
-  padding: 2px 4px;
-  margin-right: 8px;
-}
-#nav a { color: #8CBDA9; }
-
-#header { background-color: #8CBDA9; }
-.site_id { margin-top: 24px; padding-left: 8px; }
-.site_id a { text-decoration: none; color: #53675F; }
-
-#footer { margin-top: 64px; border-top: 1px solid #797979; }
-
-#new, #tasks, #details { margin-top: 48px; }
-
-#tags {
-  margin-top: 48px;
-  padding-left: 12px;
-  border-left: 1px solid #797979;
-}
-
-#tags ul { list-style-type: none; margin: 0; }
-
-#tags li {
-  font-size: 12px;
-  margin-bottom: 8px;
-  margin-left: -2px;
-}
+#header { background-color: #263F52; margin-bottom: 0; }
+.site_id { margin-top: 24px; padding-left: 12px; }
+.site_id a { text-decoration: none; color: #E0E0E0; }
 
 .big { font-size: 18px; padding: 5px; margin-top: 4px; }
-.mid { font-size: 14px; }
 
-#tasks li { margin-bottom: 8px; }
+.main_content { border-bottom: 2px solid #263F52; background-color: #E0E0E0; }

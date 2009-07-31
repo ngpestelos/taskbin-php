@@ -11,52 +11,41 @@
     <script type="text/javascript">
       $(document).ready(function() {  
         $("#task").focus();
+        $("form").submit(function(element) {
+          element.preventDefault();
+        });
       });
     </script>
     <title>Welcome | taskbin</title>
     <style>
-      #send span { font-size: 12px; font-weight: bold; }
       #send label { font-weight: normal; }
-      .submit { margin-top: 36px; }
+      form p { margin-bottom: 32px; }
+      input[type='submit'] { font-size: 12px; }
     </style> 
   </head>
   <body>
     <div class="container">
-      <?php include("header.php"); ?>
-      <?php include("nav.php"); ?>
-      <div id="new" class="main_content span-16 push-3">
-        <form action="new.php" method="post">
-          <p>
-            <label for="task" class="mid">New Task</label><br />
-            <input type="text" id="task" name="task" class="big" 
-              size="48" maxlength="48" />
-          </p>
-          <p>
-            <label for="new_tags" class="mid">Tags</label><br />
-            <input type="text" id="new_tags" size="24" maxlength="24"
-              class="big" name="new_tags" />
-          </p>
-          <p id="send">
-            <span>Send To</span><br />
-            <label for="inbox">
-              <input type="radio" id="inbox" name="type" value="inbox" checked />Inbox
-            </label>
-            <label for="next">
-              <input type="radio" id="next" name="type" value="next" />Next
-            </label>
-            <label for="someday">
-              <input type="radio" id="someday" name="type" value="someday" />Someday
-            </label>
-          </p>
-          <p class="submit">
-            <input type="submit" name="submit" value="Submit" />
-          </p>
+      <div id="header" class="span-18 push-3 last">
+        <h2 class="site_id"><a href="index.php">taskbin</a></h2>
+      </div>
+      <div id="new" class="span-18 push-3 last main_content">
+        <div style="padding: 24px;">
+          <form action="new.php" method="post">
+            <p>
+              <label for="task">New Task</label><br />
+              <input type="text" id="task" name="task" class="big" size="48" maxlength="48" />
+            </p>
+            <p>
+              <label for="tags">Tags</label><br />
+              <input type="text" id="tags" class="big" size="48" maxlength="48" />
+            </p>
+            <p class="submit">
+              <input type="submit" name="submit" value="Post" />
+            </p>
+          </div>
         </form>
       </div>
-      <div id="tags" class="span-4 last">
-        <h4>Tags</h4>
-        <?php include("tags.php"); ?>
-      </div>
+      <div id="footer" class="span-18 push-3 last"></div>
     </div>
   </body>
 </html>
