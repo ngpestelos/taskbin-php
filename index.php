@@ -12,7 +12,8 @@
       $(document).ready(function() {  
         $("#task").focus();
         $("form").submit(function(event) {
-          return false;
+          if(!($('#task').val() && $('#tags').val()))
+            return false;
         });
       });
     </script>
@@ -40,6 +41,7 @@
               <input type="submit" name="submit" value="Post" />
             </p>
           </div>
+          <input type="hidden" name="type" value="inbox" />
         </form>
       </div>
     </div>
