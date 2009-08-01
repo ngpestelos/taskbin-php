@@ -16,7 +16,7 @@ $doc  = '{' . '"_id" : ' . json_encode($id) . ', "_rev" : '
 
 $db->update($id, $doc);
 
-$redirect = "/replacement";
+$redirect = "/taskbin";
 
 header ("Location: $redirect");
 
