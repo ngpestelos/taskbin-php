@@ -3,6 +3,7 @@ body {
 }
 
 #header { background-color: #263F52; margin-bottom: 0; }
+#nav a { color: #E0E0E0; }
 .site_id { margin-top: 24px; padding-left: 12px; }
 .site_id a { text-decoration: none; color: #E0E0E0; }
 

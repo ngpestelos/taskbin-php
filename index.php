@@ -11,8 +11,8 @@
     <script type="text/javascript">
       $(document).ready(function() {  
         $("#task").focus();
-        $("form").submit(function(element) {
-          element.preventDefault();
+        $("form").submit(function(event) {
+          return false;
         });
       });
     </script>
@@ -21,12 +21,22 @@
       #send label { font-weight: normal; }
       form p { margin-bottom: 32px; }
       input[type='submit'] { font-size: 12px; }
+      #nav { padding-top: 36px; }
+      #nav a { margin-right: 8px; }
     </style> 
   </head>
   <body>
     <div class="container">
-      <div id="header" class="span-18 push-3 last">
-        <h2 class="site_id"><a href="index.php">taskbin</a></h2>
+      <div id="header" class="span-18 push-3">
+        <div class="span-9">
+          <h2 class="site_id"><a href="index.php">taskbin</a></h2>
+        </div>
+        <div id="nav" class="span-6 push-2">
+          <a href="#">Inbox</a>
+          <a href="#">Next</a>
+          <a href="#">Someday</a>
+          <a href="#">Tags</a>
+        </div>
       </div>
       <div id="new" class="span-18 push-3 last main_content">
         <div style="padding: 24px;">
