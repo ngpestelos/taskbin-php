@@ -20,24 +20,13 @@
     <style>
       #send label { font-weight: normal; }
       form p { margin-bottom: 32px; }
-      input[type='submit'] { font-size: 12px; }
       #nav { padding-top: 36px; }
       #nav a { margin-right: 8px; }
     </style> 
   </head>
   <body>
     <div class="container">
-      <div id="header" class="span-18 push-3">
-        <div class="span-9">
-          <h2 class="site_id"><a href="index.php">taskbin</a></h2>
-        </div>
-        <div id="nav" class="span-6 push-2">
-          <a href="#">Inbox</a>
-          <a href="#">Next</a>
-          <a href="#">Someday</a>
-          <a href="#">Tags</a>
-        </div>
-      </div>
+      <?php include("header.php"); ?>
       <div id="new" class="span-18 push-3 last main_content">
         <div style="padding: 24px;">
           <form action="new.php" method="post">
@@ -50,12 +39,11 @@
               <input type="text" id="tags" class="big" size="48" maxlength="48" />
             </p>
             <p class="submit">
-              <input type="submit" name="submit" value="Post" />
+              <input type="submit" name="submit" value="Post" style="font-size: 18px;" />
             </p>
           </div>
         </form>
       </div>
-      <div id="footer" class="span-18 push-3 last"></div>
     </div>
   </body>
 </html>
