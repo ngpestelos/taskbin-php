@@ -32,7 +32,7 @@ $title = isset($type) ? $type : $tag;
       <?php include("header.php"); ?>
       <div id="tasks" class="span-18 push-3 last main_content">
         <div class="pad_24">
-          <h3><?php echo $title . " ($total_rows)"; ?></h3>
+          <h3><?php echo ucfirst($title) . " ($total_rows)"; ?></h3>
           <?php
             if ($total_rows > 0) {
               echo "<ol>";
