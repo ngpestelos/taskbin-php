@@ -9,8 +9,8 @@ $task = $result->getBody(true)->task;
 $type = $result->getBody(true)->type;
 $tags = $result->getBody(true)->tags;
 
-function move_url($_id, $_type) {
-  return "move.php?id=" . $_id . "&type=" . $_type;
+function move($_id, $_type) {
+  echo "move.php?id=" . $_id . "&type=" . $_type;
 }
 
 ?>
@@ -23,29 +23,21 @@ function move_url($_id, $_type) {
     <link rel="stylesheet" href="css/screen.css" type="text/css" media="screen, projection" />
     <link rel="stylesheet" href="css/print.css" type="text/css" media="print" />
     <!--[if IE]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen, projection" /><![endif]-->
-    <title>Task Details | taskbin</title>
+    <title>Details | taskbin</title>
     <link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
     <style>
-      #send span { font-size: 12px; font-weight: bold; }
-      #send label { font-weight: normal; }
-      #move {
-        margin-top: 36px;
-        background-color: #8AA2B6;
-        font-size: 13px;
-        padding: 4px;
-        border: 1px solid #2D5576;
-      }
+      h5 { font-size: 13px; margin-bottom: 4px; font-weight: normal; font-style: italic; }
     </style>
   </head>
   <body>
     <div class="container">
       <?php include("header.php"); ?>
-      <?php include("nav.php"); ?>
-      <div id="details" class="main_content span-17 push-1">
-        <?php $task = str_replace("\'", "'", $task); ?>
-        <h3><?php echo $task . " ($type)"; ?></h3>
-        <h5>Tags</h5>
-        <ul>
+      <div id="details" class="span-18 push-3 last main_content">
+        <div class="pad_24">
+          <h5 id="type"><?php echo $type; ?></h5>
+          <h3><?php echo str_replace("\'", "'", $task); ?></h3>
+          <h4>Tags</h4>
+          <ul>
           <?php
             foreach ($tags as $t) {
               echo "<li>";
@@ -53,15 +45,14 @@ function move_url($_id, $_type) {
               echo "</li>";
             }
           ?>
-        </ul>
-      </div>
-      <div id="move" class="span-4 push-1 last">
-        <h5>Move</h5>
-        <ul>
-          <li><a href="<?php echo move_url($id, 'next'); ?>">Next</a></li>
-          <li><a href="<?php echo move_url($id, 'someday'); ?>">Someday</a></li>
-          <li><a href="<?php echo move_url($id, 'trash'); ?>">Trash</a></li>
-        </ul>
+          </ul>
+          <h4>Move</h4>
+          <ul>
+            <li><a href="<?php move($id, 'next'); ?>">Next</a></li>
+            <li><a href="<?php move($id, 'someday'); ?>">Someday</a></li>
+            <li><a href="<?php move($id, 'trash'); ?>">Trash</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </body>
