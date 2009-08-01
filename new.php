@@ -19,7 +19,7 @@ require_once ("couchdb.php");
 $db = new CouchDB('taskbin');
 $db->create($doc);
 
-$redirect = "/replacement";
+$redirect = "/taskbin";
 
 header("Location: $redirect"); 
 
