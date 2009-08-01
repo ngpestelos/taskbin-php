@@ -3,10 +3,17 @@ body {
 }
 
 #header { background-color: #263F52; margin-bottom: 0; }
+
 #nav a { color: #E0E0E0; }
+
 .site_id { margin-top: 24px; padding-left: 12px; }
 .site_id a { text-decoration: none; color: #E0E0E0; }
 
 .big { font-size: 18px; padding: 5px; margin-top: 4px; }
 
 .main_content { border-bottom: 2px solid #263F52; background-color: #E0E0E0; }
+
+.pad_24 { padding: 24px; }
+
+#nav { padding-top: 36px; }
+#nav a { margin-right: 8px; }

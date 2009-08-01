@@ -20,15 +20,13 @@
     <style>
       #send label { font-weight: normal; }
       form p { margin-bottom: 32px; }
-      #nav { padding-top: 36px; }
-      #nav a { margin-right: 8px; }
     </style> 
   </head>
   <body>
     <div class="container">
       <?php include("header.php"); ?>
       <div id="new" class="span-18 push-3 last main_content">
-        <div style="padding: 24px;">
+        <div class="pad_24">
           <form action="new.php" method="post">
             <p>
               <label for="task">New Task</label><br />
@@ -39,7 +37,7 @@
               <input type="text" id="tags" class="big" size="48" maxlength="48" />
             </p>
             <p class="submit">
-              <input type="submit" name="submit" value="Post" style="font-size: 18px;" />
+              <input type="submit" name="submit" value="Post" />
             </p>
           </div>
         </form>

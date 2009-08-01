@@ -23,29 +23,30 @@ $title = isset($type) ? $type : $tag;
     <!--[if IE]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen, projection" /><![endif]-->
     <title>Tasks | taskbin</title>
     <link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
+    <style>
+      #tasks li { margin-bottom: 8px; }
+    </style>
   </head>
   <body>
     <div class="container">
       <?php include("header.php"); ?>
-      <?php include("nav.php"); ?>
-      <div id="tasks" class="span-17 push-1">
-        <h3>
-          <?php echo $title . " ($total_rows)"; ?>
-        </h3>
-        <?php
-          if ($total_rows > 0) {
-            echo "<ol>";
-            foreach ($rows as $r) {
-              echo "<li>";
-              $task = str_replace("\'", "'", $r->value->task);
-              echo "<a href=\"details.php?id=" . $r->value->_id . "\">" . $task . "</a>";
-              echo "</li>";
+      <div id="tasks" class="span-18 push-3 last main_content">
+        <div class="pad_24">
+          <h3><?php echo $title . " ($total_rows)"; ?></h3>
+          <?php
+            if ($total_rows > 0) {
+              echo "<ol>";
+              foreach ($rows as $r) {
+                echo "<li>";
+                $task = str_replace("\'", "'", $r->value->task);
+                echo "<a href=\"details.php?id=" . $r->value->_id . "\">" . $task . "</a>";
+                echo "</li>";
+              }
+              echo "</ol>";
             }
-            echo "</ol>";
-          }
-        ?>
+          ?>
+        </div>
       </div>
-      <div class="span-24" style="border-top: 1px solid black" />
     </div>
   </body>
 </html>
