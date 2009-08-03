@@ -6,6 +6,6 @@
     <a href="tasks.php?type=inbox">Inbox</a>
     <a href="tasks.php?type=next">Next</a>
     <a href="tasks.php?type=someday">Someday</a>
-    <a href="#">Tags</a>
+    <a href="tags.php">Tags</a>
   </div>
 </div>
