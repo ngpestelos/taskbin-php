@@ -35,7 +35,7 @@
             </p>
             <p>
               <label for="tags">Tags</label><br />
-              <input type="text" id="tags" class="big" size="48" maxlength="48" />
+              <input type="text" id="tags" name="tags" class="big" size="48" maxlength="48" />
             </p>
             <p class="submit">
               <input type="submit" name="submit" value="Post" />
