@@ -1,6 +1,6 @@
 <?php
 
-$tags = explode(',', $_POST['new_tags']);
+$tags = explode(',', $_POST['tags']);
 $stripped = array();
 foreach ($tags as $t) {
   $stripped[] = trim($t);
