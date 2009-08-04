@@ -11,7 +11,10 @@ $type = $result->getBody(true)->type;
 $tags = $result->getBody(true)->tags;
 
 function move($_id, $_type, $_ref) {
-  echo "move.php?id=" . $_id . "&type=" . $_type . "&ref=" . $_ref;
+  $url = "move.php?id=" . $_id . "&type=" . $_type . "&ref=" . $_ref;
+  if (isset($_GET['tag']))
+    $url .= "&tag=" . urlencode($_GET['tag']);
+  echo $url;
 }
 
 ?>

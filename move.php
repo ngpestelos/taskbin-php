@@ -27,6 +27,9 @@ switch($ref) {
   case 'c':
     $redirect = "/taskbin/tasks.php?type=someday";
     break;
+  case 'd':
+    $redirect = "/taskbin/tagged.php?id=" . urlencode($_GET['tag']);
+    break;
   default:
     $redirect = "/taskbin";
 }
