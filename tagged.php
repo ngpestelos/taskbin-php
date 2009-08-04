@@ -2,7 +2,7 @@
 
 require_once("couchdb.php");
 $db = new CouchDB('taskbin');
-$tasks = $db->get_item('_design/tags/_view/tasks?key="' . $_GET['id'] . '"');
+$tasks = $db->get_item('_design/tagged_tasks/_view/all?key="' . $_GET['id'] . '"');
 $rows = $tasks->getBody(true)->rows;
 
 # TODO Separate tasks by type
@@ -31,6 +31,7 @@ $rows = $tasks->getBody(true)->rows;
       <div id="tasks" class="span-18 push-3 last main_content">
         <div class="pad_24">
           <h3>Tagged as '<?php echo $_GET['id']; ?>'</h3>
+          <h4>Inbox</h4>
           <ul>
           <?php
             foreach ($rows as $r) {

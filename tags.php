@@ -2,7 +2,7 @@
 
 require_once("couchdb.php");
 $db = new CouchDB('taskbin');
-$result = $db->get_item('_design/tags/_view/count?group=true');
+$result = $db->get_item('_design/tag_counts/_view/all?group=true');
 $rows = $result->getBody(true)->rows;
 
 ?>
