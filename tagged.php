@@ -2,8 +2,23 @@
 
 require_once("couchdb.php");
 $db = new CouchDB('taskbin');
-$tasks = $db->get_item('_design/tagged_tasks/_view/all?key="' . $_GET['id'] . '"');
+$tasks = $db->get_item('_design/tagged_tasks/_view/all?key="' . urlencode($_GET['id']) . '"');
 $rows = $tasks->getBody(true)->rows;
+
+function getTasks($_type) {
+}
+
+function showTasks($_rows) {
+  $html = "<ul>";
+  foreach ($_rows as $r) {
+    $task = $r->value->task;
+    $type = $r->value->type;
+    $url  = "details.php?id=" . $r->value->_id;
+    $html .= "<li><a href='". $url ."'>". $task ."</a></li>";
+  }
+  $html .= "</ul>";
+  echo $html;
+}
 
 # TODO Separate tasks by type
 ?>
@@ -31,19 +46,12 @@ $rows = $tasks->getBody(true)->rows;
       <div id="tasks" class="span-18 push-3 last main_content">
         <div class="pad_24">
           <h3>Tagged as '<?php echo $_GET['id']; ?>'</h3>
-          <h4>Inbox</h4>
-          <ul>
           <?php
-            foreach ($rows as $r) {
-              $task = $r->value->task;
-              $type = $r->value->type;
-              $url = "details.php?id=" . $r->value->_id;
-              echo "<li>";
-              echo "<a href='" . $url . "'>" . $task . "</a>";
-              echo "</li>";
-            }
+            if (sizeof($rows) == 0)
+              echo "<h5>No tasks.</h5>";
+            else
+              showTasks($rows);
           ?>
-          </ul>
         </div>
       </div>
     </div>
