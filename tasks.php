@@ -10,7 +10,20 @@ $result = $db->get_item('_design/tasks/_view/' . $type);
 $total_rows = $result->getBody(true)->total_rows;
 $rows = $result->getBody(true)->rows;
 $rows = array_reverse($rows);
-$title = isset($type) ? $type : $tag;
+
+switch($type) {
+  case 'inbox':
+    $ref = 'a';
+    break;
+  case 'next':
+    $ref = 'b';
+    break;
+  case 'someday':
+    $ref = 'c';
+    break;
+  default:
+    $ref = '';
+}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -32,14 +45,14 @@ $title = isset($type) ? $type : $tag;
       <?php include("header.php"); ?>
       <div id="tasks" class="span-18 push-3 last main_content">
         <div class="pad_24">
-          <h3><?php echo ucfirst($title) . " ($total_rows)"; ?></h3>
+          <h3><?php echo ucfirst($type) . " ($total_rows)"; ?></h3>
           <?php
             if ($total_rows > 0) {
               echo "<ol>";
               foreach ($rows as $r) {
                 echo "<li>";
                 $task = str_replace("\'", "'", $r->value->task);
-                echo "<a href=\"details.php?id=" . $r->value->_id . "\">" . $task . "</a>";
+                echo "<a href=\"details.php?id=" . $r->value->_id . "&ref=" . $ref . "\">" . $task . "</a>";
                 echo "</li>";
               }
               echo "</ol>";

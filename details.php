@@ -1,6 +1,7 @@
 <?php
 
 $id = $_GET['id'];
+$ref = $_GET['ref'];
 
 require_once("couchdb.php");
 $db = new CouchDB('taskbin');
@@ -9,8 +10,8 @@ $task = $result->getBody(true)->task;
 $type = $result->getBody(true)->type;
 $tags = $result->getBody(true)->tags;
 
-function move($_id, $_type) {
-  echo "move.php?id=" . $_id . "&type=" . $_type;
+function move($_id, $_type, $_ref) {
+  echo "move.php?id=" . $_id . "&type=" . $_type . "&ref=" . $_ref;
 }
 
 ?>
@@ -48,9 +49,9 @@ function move($_id, $_type) {
           </ul>
           <h4>Move</h4>
           <ul>
-            <li><a href="<?php move($id, 'next'); ?>">Next</a></li>
-            <li><a href="<?php move($id, 'someday'); ?>">Someday</a></li>
-            <li><a href="<?php move($id, 'trash'); ?>">Trash</a></li>
+            <li><a href="<?php move($id, 'next', $ref); ?>">Next</a></li>
+            <li><a href="<?php move($id, 'someday', $ref); ?>">Someday</a></li>
+            <li><a href="<?php move($id, 'trash', $ref); ?>">Trash</a></li>
           </ul>
         </div>
       </div>
