@@ -35,7 +35,7 @@ function move($_id, $_type, $_ref) {
       <?php include("header.php"); ?>
       <div id="details" class="span-18 push-3 last main_content">
         <div class="pad_24">
-          <h5 id="type"><?php echo $type; ?></h5>
+          <h5 id="type"><a href="tasks.php?type=<?php echo $type; ?>"><?php echo $type; ?></a></h5>
           <h3><?php echo str_replace("\'", "'", $task); ?></h3>
           <h4>Tags</h4>
           <ul>
